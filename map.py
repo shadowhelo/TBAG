@@ -1,81 +1,54 @@
 from items import *
 
-room_reception = {
-    "name": "Reception",
+room_castle_grounds = {
+    "name": "Castle Grounds",
 
     "description":
-    """You are in a maze of twisty little passages, all alike.
-Next to you is the School of Computer Science and
-Informatics reception. The receptionist, Matt Strangis,
-seems to be playing an old school text-based adventure
-game on his computer. There are corridors leading to the
-south and east. The exit is to the west.""",
+    """
+    You are in the grounds of a large castle.
 
-    "exits": {"south": "Admins", "east": "Tutor", "west": "Parking"},
+    Kirill apprears (magic poof?)
+    Gives you task to go to the castle and do something(decide end quest goal)
+    
+    Kirill gives clue to how to solve the bridge ?    
+    """,
 
-    "items": [item_biscuits, item_handbook]
-}
-
-room_admins = {
-    "name": "MJ and Simon's room",
-
-    "description":
-    """You are leaning agains the door of the systems managers'
-room. Inside you notice Matt "MJ" John and Simon Jones. They
-ignore you. To the north is the reception.""",
-
-    "exits":  {"north": "Reception"},
+    "exits": {"north": "Bridge"}
 
     "items": []
 }
 
-room_tutor = {
-    "name": "your personal tutor's office",
+room_bridge = {
+
+    "name": "Moat Bridge",
 
     "description":
-    """You are in your personal tutor's office. He intently
-stares at his huge monitor, ignoring you completely.
-On the desk you notice a cup of coffee and an empty
-pack of biscuits. The reception is to the west.""",
+    """
+    Here lies a bridge ....
+    """,
 
-    "exits": {"west": "Reception"},
+    "exits": {"south": "Grounds", "north": "Castle_Gates"}
 
     "items": []
 }
 
-room_parking = {
-    "name": "the parking lot",
+room_castle_gates = {
+
+    "name": "Castle Gates",
 
     "description":
-    """You are standing in the Queen's Buildings parking lot.
-You can go south to the COMSC reception, or east to the
-general office.""",
+    """
+    Here lies a gate ....
+    """,
 
-    "exits": {"east": "Office", "south": "Reception"},
+    "exits": {"south": "bridge", "north": "Main_Hall"}
 
     "items": []
 }
-
-room_office = {
-    "name": "the general office",
-
-    "description":
-    """You are standing next to the cashier's till at
-30-36 Newport Road. The cashier looks at you with hope
-in their eyes. If you go west you can return to the
-Queen's Buildings.""",
-
-    "exits": {"west": "Parking"},
-
-    "items": [item_pen]
-}
-
-
 
 rooms = {
-    "Reception": room_reception,
-    "Admins": room_admins,
-    "Tutor": room_tutor,
-    "Parking": room_parking,
-    "Office": room_office
+    "Grounds": room_castle_grounds,
+    "Bridge": room_bridge,
+    "Castle_Gates": room_castle_gates,
+    "Main_Hall": room_main_hall,
 }
