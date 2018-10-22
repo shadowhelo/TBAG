@@ -319,9 +319,6 @@ def menu(exits, room_items, inv_items):
     # Display menu
     print_menu(exits, room_items, inv_items)
 
-    if current_room["name"] == "Courtyard":
-        courtyard()
-
     # Read player's input
     user_input = input("> ")
 
@@ -353,7 +350,32 @@ def castle_grounds():
     return
 
 def courtyard():
-    print("yes")
+    print("At first the door seems dark, like a great mouth of some form of massive stony beast, but shortly it begins to glow. Slowly you can make out letters appearing, as if etched in moonlight upon the oaken door:")
+
+    print("This thing all things devours:")
+    time.sleep(1)
+    print("Birds, beasts, trees, flowers;")
+    time.sleep(1)
+    print("Gnaws iron, bites steel;")
+    time.sleep(1)
+    print("Grinds hard stones to meal;")
+    time.sleep(1)
+    print("Slays king, ruins town,")
+    time.sleep(1)
+    print("And beats high mountain down.")
+    time.sleep(1)
+    print("Name this thing, and enter.")
+
+    riddle_solved = False
+
+    while riddle_solved == False:
+        user_input = input("> ")
+        normalise_input(user_input)
+        user_input = ''.join(user_input).lower()
+
+        if user_input == "time":
+            riddle_solved = True
+        
     return
 
 
@@ -364,43 +386,56 @@ def main():
     global player_name
     
     print("""
- __  ___  __   ______       __   __       __          _______     
-|  |/  / |  | |   _  \     |  | |  |     |  |        /       |   
-|  '  /  |  | |  |_)  |    |  | |  |     |  |       |   (----`   
-|    <   |  | |      /     |  | |  |     |  |        \   \       
-|  .  \  |  | |  |\  \----.|  | |  `----.|  `----.----)   |      
-|__|\__\ |__| | _| `._____||__| |_______||_______|_______/       
+ __  ___  __   ______    __   __       __          _______     
+|  |/  / |  | |   _  \  |  | |  |     |  |        /       |   
+|  '  /  |  | |  |_)  | |  | |  |     |  |       |   (----`   
+|    <   |  | |      /  |  | |  |     |  |        \   \       
+|  .  \  |  | |  |\  \-.|  | |  `----.|  `----.----)   |      
+|__|\__\ |__| | _| `.__||__| |_______||_______|_______/       
 
- __  ___      ___          _______ ___________  __       _______
-|  |/  /     /   \        /       |           ||  |     |   ____|
-|  '  /     /  ^  \      |   (----`---|  |----`|  |     |  |__
-|    <     /  /_\  \      \   \       |  |     |  |     |   __|
-|  .  \   /  _____  \ .----)   |      |  |     |  `----.|  |____
-|__|\__\ /__/     \__\|_______/       |__|     |_______||_______|
+ __  ___      ___          _______ __________  __       _______
+|  |/  /     /   \        /       |          ||  |     |   ____|
+|  '  /     /  ^  \      |   (----`---|  |---`|  |     |  |__
+|    <     /  /_\  \      \   \       |  |    |  |     |   __|
+|  .  \   /  _____  \ .----)   |      |  |    |  `----.|  |____
+|__|\__\ /__/     \__\|_______/       |__|    |_______||_______|
 
 """)
 
-    input("Press enter to continue..." + "\n")
+    try:
+        input("Press enter to continue...")
+    except SyntaxError:
+        pass
     
-    print("You emerge from a dense forest into a large clearing, upon the rise in front of you stands a of you is aforboding castle made of a dark stone. The castles..." + "\n")
+    print()
+    print("You emerge from a dense forest into a large clearing, upon the rise in front of you stands a of you is a forboding castle made of a dark stone. The castles..." + "\n")
     print("You start walk towards the castle when a wizened man in flowing blue robes calls you from behind. You walk over to the man and he asks of your name.")
     print("You reply by saying your name is")
 
-    player_name = input("")
-    player_name = normalise_input(player_name)
-    player_name = ''.join(player_name)
+    player_name=""
+    while player_name == "":    
+        player_name = input("")
+        player_name = normalise_input(player_name)
+        player_name = ''.join(player_name)
 
     print("Ahh, so it is you after all " + player_name + """. You have come finally, as it was fortold many years ago that you would be the one to....""")
 
     time.sleep(1)
 
     print("Do you accept this mighty quest?")
-    print("Yes or No?")
 
-    user_input = input()
-    user_input = normalise_input(user_input)
-    user_input = ''.join(user_input)
-
+    user_input = ""
+    exit_loop = False
+    while exit_loop == False:
+        print("Yes or No?")
+        user_input = input()
+        user_input = normalise_input(user_input)
+        user_input = ''.join(user_input)
+        if user_input == "yes":
+            exit_loop = True
+        elif user_input == "no":
+                exit_loop = True
+            
     if (user_input != "yes"):
         print("Alas, perhaps you are not the " + player_name + " I was looking for.")
         print("The wizened man in flowing blue robes walks back into the forest")
@@ -413,6 +448,10 @@ def main():
         # Display game status (room description, inventory etc.)
         print_room(current_room)
         print_inventory_items(inventory)
+
+        #interupts here to ensure loop works correctly
+        if current_room["name"] == "Courtyard":
+            courtyard()
 
         # Show the menu with possible actions and ask the player
         command = menu(current_room["exits"], current_room["items"], inventory)
