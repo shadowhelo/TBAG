@@ -106,7 +106,7 @@ room_great_hall = {
 
     "exits": {"south": "Courtyard", "north": "Tower", "east": "Dungeon", "west": "Throne_Room"},
 
-    "items": []
+    "items": [item_survival_kit]
 
  
 
@@ -127,7 +127,7 @@ room_throne_room = {
 
     "exits": {"west": "Great_Hall"},
 
-    "items": []
+    "items": [item_sword]
 }
 
 room_dungeon = {
@@ -141,17 +141,17 @@ room_dungeon = {
 
     single torch hanging from the ceiling. By the torch, black text is sloppily painted on the wall. You accidentally kick 
 
-    a pile of books lying on the floor and a cloud of dust forms. Moving towards the farthest corner, you can hear a distant 
+    a pile of books lying on the floor and a cloud of dust forms. Moving towards the farthest corner, you spot an old oak bookcase 
 
-    clock ticking. There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m 
+    and hear a distant clock ticking. There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. 
 
-    late, I’m late for a very important date”. The long hand on his clock face points at a bearing of 240, and the short hand 030. 
-
-    There is a rusty gate to the south. The door then slams behind you, the clock has started, GO!""",
+    He mutters “I’m late, I’m late for a very important date”. The long hand on his clock face points at a bearing of 240, and the 
+    
+    short hand 030. There is a rusty gate to the south. The door then slams behind you, the clock has started, GO!""",
 
     "exits": {"east": "Great_Hall", "south": "Credits" },
 
-    "items": []
+    "items": [item_love_potion]
 }
 
 room_tower = {
@@ -171,7 +171,7 @@ room_tower = {
 
     "exits": {"east": "Great_Hall", "south": "Credits" },
 
-    "items": []
+    "items": [item_arkenstone]
 }
 
 
