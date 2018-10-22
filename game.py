@@ -24,12 +24,12 @@ def list_of_items(items):
 
     """
     items_return = []
-    
+
     for i in items:
         items_return.append(i["name"])
 
     return ', '.join(items_return)
-    
+
 
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
@@ -207,7 +207,7 @@ def print_menu(exits, room_items, inv_items):
 
     for i in inv_items:
         print("DROP " + str(i["id"]).upper() + " to drop your " + i["name"])
-    
+
     print("What do you want to do?")
 
 
@@ -242,7 +242,7 @@ def execute_go(direction):
         current_room = move(current_room["exits"],direction)
     else:
         print("you cannot go there")
-        
+
 
 def execute_take(item_id):
     """This function takes an item_id as an argument and moves this item from the
@@ -258,7 +258,7 @@ def execute_take(item_id):
             current_room["items"].remove(i)
             return
     print("You cannot take that.")
-    
+
 
 def execute_drop(item_id):
     """This function takes an item_id as an argument and moves this item from the
@@ -340,7 +340,7 @@ def move(exits, direction):
     True
     >>> move(rooms["Reception"]["exits"], "east") == rooms["Tutor"]
     True
-    
+
     >>> move(rooms["Reception"]["exits"], "west") == rooms["Office"]
     False
     """
@@ -360,9 +360,16 @@ def courtyard():
 
 # This is the entry point of our program
 def main():
-
+Main_Title = """
+ __  ___  __  .______       __   __       __          _______.    __  ___      ___           _______.___________. __       _______
+|  |/  / |  | |   _  \     |  | |  |     |  |        /       |   |  |/  /     /   \         /       |           ||  |     |   ____|
+|  '  /  |  | |  |_)  |    |  | |  |     |  |       |   (----`   |  '  /     /  ^  \       |   (----`---|  |----`|  |     |  |__
+|    <   |  | |      /     |  | |  |     |  |        \   \       |    <     /  /_\  \       \   \       |  |     |  |     |   __|
+|  .  \  |  | |  |\  \----.|  | |  `----.|  `----.----)   |      |  .  \   /  _____  \  .----)   |      |  |     |  `----.|  |____
+|__|\__\ |__| | _| `._____||__| |_______||_______|_______/       |__|\__\ /__/     \__\ |_______/       |__|     |_______||_______|
+"""
     global player_name
-
+    print (Main_Title)
     print("You emerge from a dense forest into a large clearing, upon the rise in front of you stands a of you is aforboding castle made of a dark stone. The castles..." + "\n")
     print("You start walk towards the castle when a wizened man in flowing blue robes calls you from behind. You walk over to the man and he asks of your name.")
     print("You reply by saying your name is")
@@ -388,7 +395,7 @@ def main():
         return
 
     time.sleep(1)
-    
+
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
