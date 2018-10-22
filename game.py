@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import time
 
 from map import rooms
 from player import *
@@ -347,6 +348,34 @@ def move(exits, direction):
 # This is the entry point of our program
 def main():
 
+    global player_name
+
+    print("You emerge from a dense forest into a large clearing, upon the rise in front of you stands a of you is aforboding castle made of a dark stone. The castles..." + "\n")
+    print("You start walk towards the castle when a wizened man in flowing blue robes calls you from behind. You walk over to the man and he asks of your name.")
+    print("You reply by saying your name is")
+
+    player_name = input("")
+    player_name = normalise_input(player_name)
+    player_name = ''.join(player_name)
+
+    print("Ahh, so it is you after all " + player_name + """. You have come finally, as it was fortold many years ago that you would be the one to....""")
+
+    time.sleep(1)
+
+    print("Do you accept this mighty quest?")
+    print("Yes or No?")
+
+    user_input = input()
+    user_input = normalise_input(user_input)
+    user_input = ''.join(user_input)
+
+    if (user_input != "yes"):
+        print("Alas, perhaps you are not the " + player_name + " I was looking for.")
+        print("The wizened man in flowing blue robes walks back into the forest")
+        return
+
+    time.sleep(1)
+    
     # Main game loop
     while True:
         # Display game status (room description, inventory etc.)
