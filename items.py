@@ -1,51 +1,32 @@
-item_id = {
-    "id": "id",
+item_survival_kit = {
+    "id": "survival kit",
 
-    "name": "id card",
-
-    "description":
-    """You new shiny student ID card. Expires 1 June 2017.
-You wonder why they have printed a suicide hotline number on it?..."""
-}
-
-item_laptop = {
-    "id": "laptop",
-
-    "name": "laptop",
+    "name": "kirill's survival kit",
 
     "description":
-    "It has seen better days. At least it has a WiFi card!"
+    "A dusty green box labelled 'kirills DO NOT TOUCH!'."
 }
 
-item_money = {
-    "id": "money",
+item_love_potion = {
+    "id": "love potion",
 
-    "name": "money",
+    "name": "Amortentia",
 
-    "description":
-    "This wad of cash is barely enough to pay your tuition fees."
+    "description": "A potent love potion just one whiff and the victim falls helplessly in love."
 }
 
-item_biscuits = {
-    "id": "biscuits",
+item_sword = {
+    "id": "sword",
 
-    "name": "a pack of biscuits",
+    "name": "The Atlantean Sword",
 
-    "description": "A pack of biscuits."
+    "description": "The Atlantean Sword is a bastard sword that once belonged to an ancient king who, along with this sword and several servants, was buried in a small tomb."
 }
 
-item_pen = {
-    "id": "pen",
-    
-    "name": "a pen",
+item_arkenstone = {
+    "id": "arkenstone",
 
-    "description": "A basic ballpoint pen."
-}
+    "name": "arkenstone",
 
-item_handbook = {
-    "id": "handbook",
-    
-    "name": "a student handbook",
-
-    "description": "This student handbook explains everything. Seriously."
+    "description": "A wondrous large white gem, the royal jewel of the Dwarf-kingdom of Erebor."
 }
