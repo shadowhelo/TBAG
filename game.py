@@ -319,6 +319,9 @@ def menu(exits, room_items, inv_items):
     # Display menu
     print_menu(exits, room_items, inv_items)
 
+    if current_room["name"] == "Courtyard":
+        courtyard()
+
     # Read player's input
     user_input = input("> ")
 
@@ -337,12 +340,22 @@ def move(exits, direction):
     True
     >>> move(rooms["Reception"]["exits"], "east") == rooms["Tutor"]
     True
+    
     >>> move(rooms["Reception"]["exits"], "west") == rooms["Office"]
     False
     """
 
     # Next room to go to
     return rooms[exits[direction]]
+
+def castle_grounds():
+
+    return
+
+def courtyard():
+    print("yes")
+    return
+
 
 
 # This is the entry point of our program
