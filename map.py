@@ -23,7 +23,6 @@ room_courtyard = {
     "description":
     """You have crossed the moat, into the coutryard. Rising above you to the north is the castle wall. Its parapets loom overhead, its murder holes glare out at you as if eyes of a great beast. The courtyard you stand in, however is a beautiful garden, with blooming flowers. The courtyard has clearly not been maintained in some time, as thegrass brushes up above your ankles and the bushes are an unruly mess.
 Despite this, the beauty of the flowering plants, and the deep, dark reflecting pool in front of the great door cannot be denied.
-
 At first the door seems dark, like a great mouth of some form of massive stony beast, but shortly it begins to glow. Slowly you can make out letters appearing, as if etched in moonlight upon the oaken door:
 
 This thing all things devours:
@@ -50,11 +49,8 @@ room_castle_grounds = {
     "name": "Castle Grounds",
 
     "description": """You arrive at the edge of the castle grounds, three paths lie before you;
-
 There is a path to that leads to the castle from the west of you made of yellow bricks.
-
 There is a path to the north of you that has a small white dog bounding down infront of you.
-
 There is a path to the east that curves towards the castle which has a pair of red shoes part way down it. 
     """,
 
@@ -110,14 +106,10 @@ room_tower = {
 
     "description": 
     """As you enter the final room the hot smokey air fills your lungs. The heat dries the moisture in 
-
-    your eyes, blurring your vision. As you look up from the burnt stone floor you see a plethora of skeletons; the 
-
-    remains of the people that have tried before. The ground shakes and a hot gust of air blows you back. Towering over 
-
-    you is the grotesque scaley beast with dagger-like fangs and wings too small for its humongous body. 
-
-    Wrapped in its tail is an annoying donkey.""",
+your eyes, blurring your vision. As you look up from the burnt stone floor you see a plethora of skeletons; the 
+remains of the people that have tried before. The ground shakes and a hot gust of air blows you back. Towering over 
+you is the grotesque scaley beast with dagger-like fangs and wings too small for its humongous body. 
+Wrapped in its tail is an annoying donkey.""",
 
     "exits": {"east": "Great_Hall", "south": "Credits" },
 
