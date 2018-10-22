@@ -1,21 +1,5 @@
 from items import *
 
-"""
-    Main Menu
-    
-    You emerge from a dense forest into a large clearing, upon the rise in front of you stands a
-    of you is aforboding castle made of a dark stone. The castles...
-
-    you walk towards the castle when a wizened old man calls you from behind
-    (optional line) and asks your name (to be stored and refernced?)
-
-    Gives you task to go to the castle and do something(decide end quest goal)
-
-    Do you accept the quest ? (yes or no, no closes the game)
-    
-    Kirill gives clue/reference to how to solve the bridge ?
-"""
-
 room_death = {
     "name":"",
 
