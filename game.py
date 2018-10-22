@@ -363,7 +363,7 @@ def main():
 
     global player_name
 
-    print("You emerge from a dense forest into a large clearing, upon the rise in front of you stands a of you is aforboding castle made of a dark stone. The castles..." + "\n")
+    print("You emerge from a dense forest into a large clearing, upon the rise in front of you stands a aforboding castle made of a dark stone. The castles..." + "\n")
     print("You start walk towards the castle when a wizened man in flowing blue robes calls you from behind. You walk over to the man and he asks of your name.")
     print("You reply by saying your name is")
 
