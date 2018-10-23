@@ -36,5 +36,4 @@ feature_wall_text = {
 	"name": "text on wall",
 
 	"description": "\nInscribed on the wall is a block of text saying, \n" + """"I HINT AT WHICH BOOK TO PICKUP." """
-
 }

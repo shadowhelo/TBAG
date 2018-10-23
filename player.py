@@ -5,5 +5,4 @@ inventory = []
 
 player_name = ""
 
-# Start game at the reception
 current_room = rooms["Castle_Grounds"]
