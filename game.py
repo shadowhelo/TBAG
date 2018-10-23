@@ -215,7 +215,7 @@ def print_menu(exits, room_items, inv_items):
         print("TAKE " + str(i["id"]).upper() + " to take " + i["name"])
 
     for i in inv_items:
-        print("DROP or USE " + str(i["id"]).upper() + " to drop or use your " + i["name"])
+        print("DROP, USE or INSPECT" + str(i["id"]).upper() + " to drop, use or inspect your " + i["name"])
 
     print("What do you want to do?")
 
@@ -299,6 +299,12 @@ def execute_use(item_id):
             return
     print("You cannot use that.")
 
+def execute_inspect(item_id):
+    for i in inventory:
+        if item_id == i["id"]:
+            print(i["description"]
+            return
+
 def execute_command(command):
     """This function takes a command (a list of words as returned by
     normalise_input) and, depending on the type of action (the first word of
@@ -336,6 +342,13 @@ def execute_command(command):
             return execute_use(command[1])
         else:
             print("Use what?")
+
+    elif command[0] == "inspect":
+        if len(command) > 1:
+            exectute_inspect(command[1])
+        else:
+            print("Inspect what?")
+        return
                 
     else:
         print("This makes no sense.")
