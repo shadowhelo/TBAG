@@ -481,7 +481,7 @@ def main():
         pass
 
     print()
-    print("You emerge from a dense forest into a large clearing, upon the rise in front of you stands a of you is a forboding castle made of a dark stone. The castles..." + "\n")
+    print("You emerge from a dense forest into a large clearing, upon the rise in front of you stands a of you is a foreboding castle made of a dark stone that has crumbled from the icy winters. The castle walls stood tall but as the tower that protruded into the clouds it looked as though it never ended. As you scan over the imposing structure you notice some windows are shattered and all that remains are fragments of glass stuck in the frame. The colours in the stained glass glowed in the dim sunlight peeking through the clouds, making it obvious it once was beautiful." + "\n")
     print("You start walk towards the castle when a wizened man in flowing blue robes calls you from behind. You walk over to the man and he asks of your name.")
     print("You reply by saying your name is")
 
