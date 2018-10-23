@@ -336,7 +336,7 @@ def execute_command(command):
         else:
             print("Drop what?")
         return
-            
+
     elif command[0] == "use":
         if len(command) > 1:
             return execute_use(command[1])
@@ -349,7 +349,7 @@ def execute_command(command):
         else:
             print("Inspect what?")
         return
-                
+
     else:
         print("This makes no sense.")
 
@@ -401,10 +401,10 @@ def dungeon():
     global inventory
     if dungeon_locked == True:
         print("There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m late, I’m late for a very important date”. The long hand on his clock face points at a bearing of 240, and the short hand 030. There is a rusty gate to the south. The door then slams behind you, the clock has started, GO!\n")
-    while dungeon_locked == True:    
+    while dungeon_locked == True:
         # Show the menu with possible actions and ask the player
         command = menu([], current_room["items"], inventory)
-        
+
         # Execute the player's command
         use_list = execute_command(command)
         correct_book = "book3"
@@ -419,7 +419,7 @@ def dungeon():
                     inventory.remove(use_list[1])
         except:
             pass
-    
+
     return
 
 def courtyard():
@@ -448,7 +448,7 @@ def courtyard():
 
         if user_input == "time":
             riddle_solved = True
-        
+
     return
 
 
@@ -457,14 +457,14 @@ def courtyard():
 def main():
 
     global player_name
-    
+
     print("""
- __  ___  __   ______    __   __       __          _______     
-|  |/  / |  | |   _  \  |  | |  |     |  |        /       |   
-|  '  /  |  | |  |_)  | |  | |  |     |  |       |   (----`   
-|    <   |  | |      /  |  | |  |     |  |        \   \       
-|  .  \  |  | |  |\  \-.|  | |  `----.|  `----.----)   |      
-|__|\__\ |__| | _| `.__||__| |_______||_______|_______/       
+ __  ___  __   ______    __   __       __          _______
+|  |/  / |  | |   _  \  |  | |  |     |  |        /       |
+|  '  /  |  | |  |_)  | |  | |  |     |  |       |   (----`
+|    <   |  | |      /  |  | |  |     |  |        \   \
+|  .  \  |  | |  |\  \-.|  | |  `----.|  `----.----)   |
+|__|\__\ |__| | _| `.__||__| |_______||_______|_______/
 
  __  ___      ___          _______ __________  __       _______
 |  |/  /     /   \        /       |          ||  |     |   ____|
@@ -479,14 +479,14 @@ def main():
         input("Press enter to continue...")
     except SyntaxError:
         pass
-    
+
     print()
     print("You emerge from a dense forest into a large clearing, upon the rise in front of you stands a of you is a forboding castle made of a dark stone. The castles..." + "\n")
     print("You start walk towards the castle when a wizened man in flowing blue robes calls you from behind. You walk over to the man and he asks of your name.")
     print("You reply by saying your name is")
 
     player_name=""
-    while player_name == "":    
+    while player_name == "":
         player_name = input("")
         player_name = normalise_input(player_name)
         player_name = ''.join(player_name)
@@ -508,7 +508,7 @@ def main():
             exit_loop = True
         elif user_input == "no":
                 exit_loop = True
-            
+
     if (user_input != "yes"):
         print("Alas, perhaps you are not the " + player_name + " I was looking for.")
         print("The wizened man in flowing blue robes walks back into the forest")
