@@ -1,4 +1,5 @@
 from items import *
+from features import *
 
 room_death = {
     "name":"",
@@ -23,25 +24,13 @@ room_courtyard = {
     "description":
     """You have crossed the moat, into the coutryard. Rising above you to the north is the castle wall. Its parapets loom overhead, its murder holes glare out at you as if eyes of a great beast. The courtyard you stand in, however is a beautiful garden, with blooming flowers. The courtyard has clearly not been maintained in some time, as thegrass brushes up above your ankles and the bushes are an unruly mess.
 Despite this, the beauty of the flowering plants, and the deep, dark reflecting pool in front of the great door cannot be denied.
-At first the door seems dark, like a great mouth of some form of massive stony beast, but shortly it begins to glow. Slowly you can make out letters appearing, as if etched in moonlight upon the oaken door:
-
-This thing all things devours:
-    
-Birds, beasts, trees, flowers;
-    
-Gnaws iron, bites steel;
-    
-Grinds hard stones to meal;
-    
-Slays king, ruins town,
-    
-And beats high mountain down.
-    
-Name this thing, and enter.""",
+""",
 
     "exits": {"north": "Great_Hall"},
 
-    "items": []
+    "items": [],
+
+    "features": []
 }
 
 room_castle_grounds = {
@@ -56,7 +45,9 @@ There is a path to the east that curves towards the castle which has a pair of r
 
     "exits": {"west": "Courtyard", "north": "Courtyard", "east": "Courtyard"},
 
-    "items": []
+    "items": [],
+
+    "features": []
 }
 
 room_great_hall = {
@@ -69,7 +60,9 @@ To your West there is a doorway with a staircase leading down, to your East ther
 
     "exits": {"south": "Courtyard", "north": "Tower", "east": "Dungeon", "west": "Throne_Room"},
 
-    "items": []
+    "items": [],
+
+    "features": []
 }
  
 
@@ -82,7 +75,9 @@ room_throne_room = {
 
     "exits": {"west": "Great_Hall"},
 
-    "items": []
+    "items": [],
+
+    "features": []
 }
 
 room_dungeon = {
@@ -91,13 +86,13 @@ room_dungeon = {
 
     "description":
     """You make your way down a dark spiraling staircase, into a dimly lit room. The air here is dense and much cooler. 
-Its suspiciously quiet; you can hear the rising and falling of your own breath. You feel the warmth emanating from a single torch hanging from the ceiling. By the torch, black text is sloppily painted on the wall. You accidentally kick a pile of books lying on the floor and a cloud of dust forms. Moving towards the farthest corner, you can hear a distant clock ticking.
-There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m late, I’m late for a very important date”. The long hand on his clock face points at a bearing of 240, and the short hand 030. 
-There is a rusty gate to the south. The door then slams behind you, the clock has started, GO!""",
+Its suspiciously quiet; you can hear the rising and falling of your own breath. You feel the warmth emanating from a single torch hanging from the ceiling. By the torch, black text is sloppily painted on the wall. You accidentally kick a pile of books lying on the floor and a cloud of dust forms. Moving towards the farthest corner, you can hear a distant clock ticking.""",
 
     "exits": {"east": "Great_Hall", "south": "Credits" },
 
-    "items": []
+    "items": [item_book1, item_book2, item_book3, item_book4, item_book5, item_book6, item_book7],
+
+    "features": [feature_bookcase]
 }
 
 room_tower = {
@@ -112,8 +107,10 @@ you is the grotesque scaley beast with dagger-like fangs and wings too small for
 Wrapped in its tail is an annoying donkey.""",
 
     "exits": {"east": "Great_Hall", "south": "Credits" },
+    
+    "items": [],
 
-    "items": []
+    "features": []
 }
 
 

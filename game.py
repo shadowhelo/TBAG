@@ -5,6 +5,12 @@ from map import rooms
 from player import *
 from items import *
 from gameparser import *
+#from features import *
+
+dungeon_locked = True
+#current_room = rooms["Castle_Grounds"]
+#player_name = ""
+#inventory = [item_sword]
 
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
@@ -30,6 +36,9 @@ def list_of_items(items):
 
     return ', '.join(items_return)
 
+def print_features(room):
+    for f in room["features"]:
+        print( f["name"])
 
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
@@ -206,7 +215,7 @@ def print_menu(exits, room_items, inv_items):
         print("TAKE " + str(i["id"]).upper() + " to take " + i["name"])
 
     for i in inv_items:
-        print("DROP " + str(i["id"]).upper() + " to drop your " + i["name"])
+        print("DROP or USE " + str(i["id"]).upper() + " to drop or use your " + i["name"])
 
     print("What do you want to do?")
 
@@ -274,6 +283,22 @@ def execute_drop(item_id):
             return
     print("You cannot drop that.")
 
+def execute_use(item_id):
+    global current_room
+    for i in inventory:
+        if item_id == i["id"]:
+            print("\nObjects in room that can be acted upon:")
+            print_features(current_room)
+            print("Use " + i["name"] + " on what?")
+            feat = input("")
+            feat = normalise_input(feat)
+            for f in current_room["features"]:
+                if feat[0] == f["id"]:
+                    print("You attempt to use " + i["name"] + " on " + f["name"] + ".")
+                    return list([f,i])
+            return
+    print("You cannot use that.")
+
 def execute_command(command):
     """This function takes a command (a list of words as returned by
     normalise_input) and, depending on the type of action (the first word of
@@ -290,19 +315,28 @@ def execute_command(command):
             execute_go(command[1])
         else:
             print("Go where?")
+        return
 
     elif command[0] == "take":
         if len(command) > 1:
             execute_take(command[1])
         else:
             print("Take what?")
+        return
 
     elif command[0] == "drop":
         if len(command) > 1:
             execute_drop(command[1])
         else:
             print("Drop what?")
-
+        return
+            
+    elif command[0] == "use":
+        if len(command) > 1:
+            return execute_use(command[1])
+        else:
+            print("Use what?")
+                
     else:
         print("This makes no sense.")
 
@@ -349,22 +383,48 @@ def castle_grounds():
 
     return
 
+def dungeon():
+    global dungeon_locked
+    global inventory
+    if dungeon_locked == True:
+        print("There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m late, I’m late for a very important date”. The long hand on his clock face points at a bearing of 240, and the short hand 030. There is a rusty gate to the south. The door then slams behind you, the clock has started, GO!\n")
+    while dungeon_locked == True:    
+        # Show the menu with possible actions and ask the player
+        command = menu([], current_room["items"], inventory)
+        
+        # Execute the player's command
+        use_list = execute_command(command)
+        correct_book = "book3"
+        try:
+            if use_list[1]["id"] == correct_book:
+                    print("You place The Art of War upon the shelf of the bookcase. The room begins to shake and you hear the clicking of a latch behind. The door is open again!\n")
+                    inventory.remove(use_list[1])
+                    dungeon_locked = False
+                    break
+            else:
+                    print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and book flies into the air and burst into flame, and is quickly turned into a pile of dust.\n")
+                    inventory.remove(use_list[1])
+        except:
+            pass
+    
+    return
+
 def courtyard():
     print("At first the door seems dark, like a great mouth of some form of massive stony beast, but shortly it begins to glow. Slowly you can make out letters appearing, as if etched in moonlight upon the oaken door:")
 
-    print("This thing all things devours:")
-    time.sleep(1)
-    print("Birds, beasts, trees, flowers;")
-    time.sleep(1)
-    print("Gnaws iron, bites steel;")
-    time.sleep(1)
-    print("Grinds hard stones to meal;")
-    time.sleep(1)
-    print("Slays king, ruins town,")
-    time.sleep(1)
-    print("And beats high mountain down.")
-    time.sleep(1)
-    print("Name this thing, and enter.")
+    print("\n\tThis thing all things devours:")
+    #time.sleep(1)
+    print("\tBirds, beasts, trees, flowers;")
+    #time.sleep(1)
+    print("\tGnaws iron, bites steel;")
+    #time.sleep(1)
+    print("\tGrinds hard stones to meal;")
+    #time.sleep(1)
+    print("\tSlays king, ruins town,")
+    #time.sleep(1)
+    print("\tAnd beats high mountain down.\n")
+    #time.sleep(1)
+    print("\tName this thing, and enter.")
 
     riddle_solved = False
 
@@ -452,6 +512,8 @@ def main():
         #interupts here to ensure loop works correctly
         if current_room["name"] == "Courtyard":
             courtyard()
+        elif current_room["name"] == "Dungeon":
+            dungeon()
 
         # Show the menu with possible actions and ask the player
         command = menu(current_room["exits"], current_room["items"], inventory)

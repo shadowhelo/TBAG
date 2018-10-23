@@ -1,10 +1,10 @@
 item_survival_kit = {
     "id": "survival kit",
 
-    "name": "kirill's survival kit",
+    "name": "Kirill's survival kit",
 
     "description":
-    "A dusty green box labelled 'kirills DO NOT TOUCH!'."
+    "A dusty green box labelled 'Kirill's DO NOT TOUCH!'."
 }
 
 item_love_potion = {
@@ -26,62 +26,62 @@ item_sword = {
 item_arkenstone = {
     "id": "arkenstone",
 
-    "name": "arkenstone",
+    "name": "Arkenstone",
 
     "description": "A wondrous large white gem, the royal jewel of the Dwarf-kingdom of Erebor."
 }
 item_book1 = {
-    "id": "book 1",
+    "id": "book1",
 
-    "name": "pride and prejudice",
+    "name": "Pride and Prejudice",
 
     "description": "An old leather bound book."
 
 }
 item_book2 = {
-    "id": "book 2",
+    "id": "book2",
 
-    "name": "romeo and juliet",
+    "name": "Romeo and Juliet",
 
     "description": "An old leather bound book."
 
 }
 item_book3 = {
-    "id": "book 3",
+    "id": "book3",
 
-    "name": "the art of war",
+    "name": "The Art of War",
 
     "description": "An old leather bound book filled with great knowledge."
 
 }
 item_book4 = {
-    "id": "book 4",
+    "id": "book4",
 
-    "name": "great expectations",
+    "name": "Great Expectations",
 
     "description": "An old leather bound book."
 
 }
 item_book5 = {
-    "id": "book 5",
+    "id": "book5",
 
-    "name": "a midsummer nights dream",
+    "name": "A Midsummer Nights Dream",
 
     "description": "An old leather bound book."
 
 }
 item_book6 = {
-    "id": "book 6",
+    "id": "book6",
 
-    "name": "the great gatsby",
+    "name": "The Great Gatsby",
 
     "description": "An old leather bound book."
 
 }
 item_book7 = {
-    "id": "book 7",
+    "id": "book7",
 
-    "name": "breakfast at tiffanys",
+    "name": "Breakfast at Tiffanys",
 
     "description": "An old leather bound book."
 
