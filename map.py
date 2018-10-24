@@ -98,7 +98,7 @@ room_throne_room = {
     "description":
     """As you enter the Throne Room in front of you is a large stone table with
 numerous symbols etched into the side of it. In the corner of the room there is
-a rather large and familiar wardrobe, the wardrobe is slightly open and inside
+a rather large and familiar wardrobe, the wardrobe is ajar and inside
 you can see at least 10 big fur coats.""",
 
     "exits": {"west": "Great_Hall"},
