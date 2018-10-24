@@ -664,8 +664,9 @@ def main():
             time.sleep(3)
 
         if current_room == rooms["Death"]:
-            print(rooms["Death"]["description"]
+            print(rooms["Death"]["description"])
             break
+
         # Display game status (room description, inventory etc.)
         print_room(current_room)
         print_inventory_items(inventory)
