@@ -255,6 +255,12 @@ def execute_go(direction):
         print("You are locked in.")
     elif (current_room == rooms["Great_Hall"] and tower_locked == True and direction == "north"):
         print("That door is locked, for now.")
+    elif (current_room == rooms["Castle_Grounds"]) and (direction == "east" or direction == "north"):
+        print("The stone beneath your feet feels unsteady, and then...")
+        time.sleep(1)
+        print("The floor gives out from underneath you, and you tumble into the water, cracking your head against the rocks.")
+        time.sleep(2)
+        current_room = move(current_room["exits"],direction)
     elif (is_valid_exit(current_room["exits"], direction) == True):
         current_room = move(current_room["exits"],direction)
     else:
@@ -406,9 +412,6 @@ def move(exits, direction):
     # Next room to go to
     return rooms[exits[direction]]
 
-def castle_grounds():
-    
-    return
 
 def dungeon():
     global dungeon_locked
@@ -665,6 +668,8 @@ def main():
 
         if current_room == rooms["Death"]:
             print(rooms["Death"]["description"])
+            time.sleep(1)
+            print_credits()
             break
 
         # Display game status (room description, inventory etc.)
@@ -672,9 +677,7 @@ def main():
         print_inventory_items(inventory)
 
         #interupts here to ensure loop works correctly
-        if current_room["name"] == "Castle Grounds")
-            castle_grounds()
-        elif current_room["name"] == "Courtyard":
+        if current_room["name"] == "Courtyard":
             courtyard()
         elif current_room["name"] == "Dungeon":
             dungeon()

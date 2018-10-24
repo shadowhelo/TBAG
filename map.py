@@ -2,7 +2,7 @@ from items import *
 from features import *
 
 room_death = {
-    "name":"",
+    "name":"Courtyard",
 
     "description":
     """
@@ -64,7 +64,7 @@ There is a path to the north of you that has a small white dog bounding down inf
 There is a path to the east that curves towards the castle which has a pair of red shoes
 part way down it.""",
 
-    "exits": {"west": "Courtyard", "north": "Courtyard", "east": "Courtyard"},
+    "exits": {"west": "Courtyard", "north": "Death", "east": "Death"},
 
     "items": [],
 
