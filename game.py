@@ -405,7 +405,7 @@ def dungeon():
     global dungeon_locked
     global inventory
     if dungeon_locked == True:
-        print("There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m late, I’m late for a very important date”. The long hand on his clock face points at a bearing of 240, and the short hand 030. There is a rusty gate to the south. The door then slams behind you, the clock has started, GO!\n")
+        print("There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m late, I’m late for a very important date, I'll miss my afternoon tea!”. The long hand on his clock face points at 1, and the short hand at 9. There is a rusty gate to the south. The door then slams behind you, the clock has started, GO!\n")
     while dungeon_locked == True:
         # Show the menu with possible actions and ask the player
         command = menu([], current_room["items"], inventory)
@@ -427,9 +427,9 @@ def dungeon():
                     print("You turn the key in the lock, but notice it does not rotate all the way. There are four numbers of some form of combination lock above the keyhole.")
                     print("What number do you input?")
                     combo = normalise_input(input("> "))
-                    if combo[0] == "2430":
+                    if combo[0] == "1345":
                         dungeon_locked = False
-                        print("The key rotates completely, and you hear the latch on the gate open. The room begins to shake and you hear the clicking of a latch behind. The door is open again!")
+                        print("The key rotates completely, and you hear the latch on the gate open. The room begins to shake and you hear the clicking of a latch behind. The door is open again!\n")
         except:
             pass
 

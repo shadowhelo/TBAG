@@ -16,12 +16,18 @@ ____    ____  ______    __    __      _______   __   _______  _______      __
     """
 }
 
-room_credits = {
-    "name":"",
+room_chamber = {
+    "name":"A small chamber",
 
     "description":
-    """Credits
-    """
+    """A very small room adjacent to the dungeon.
+    """,
+
+    "exits": {"north": "Dungeon"},
+
+    "items": [item_love_potion],
+
+    "features": []
 }
 
 room_courtyard = {
@@ -113,11 +119,11 @@ torch hanging from the ceiling. By the torch, black text is sloppily painted on
 the wall. You accidentally kick a pile of books lying on the floor and a cloud
 of dust forms. Moving towards the farthest corner, you can hear a distant clock ticking.""",
 
-    "exits": {"east": "Great_Hall", "south": "Credits" },
+    "exits": {"east": "Great_Hall", "south": "Chamber" },
 
     "items": [item_book1, item_book2, item_book3, item_book4, item_book5, item_book6, item_book7],
 
-    "features": [feature_bookcase]
+    "features": [feature_bookcase, feature_rusty_gate]
 }
 
 room_tower = {
@@ -150,5 +156,5 @@ rooms = {
     "Throne_Room": room_throne_room,
     "Dungeon": room_dungeon,
     "Tower" : room_tower,
-    "Credits": room_credits
+    "Chamber": room_chamber
 }
