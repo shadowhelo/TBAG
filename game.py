@@ -121,7 +121,7 @@ def print_room(room):
     There is Amortentia Love Potion here.
     <BLANKLINE>
 
-    
+
     Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
     # Display room name
@@ -134,7 +134,7 @@ def print_room(room):
     print()
     if current_room == rooms["Throne_Room"] and aslan_on_table == True:
         if inventory.count(item_sword) == 1:
-            print("As you step back from pulling the sword from the lion, the table cracks in half and you notice he has disappeared from the table. When you turn to leave the room, he is stood behind you. He cries out “They always said you should never let your heart rule your head, but is it not better to have loved and lost than to have never loved at all… ” before hopping over the table and into the wardrobe.")
+            print("As you step back from pulling the sword from the lion,\nthe table cracks in half and you notice he has disappeared from the table. \nWhen you turn to leave the room, he is stood behind you.\nHe cries out “They always said you should never let your heart rule your head, \nbut is it not better to have loved and lost than to have never loved at all… ”\nbefore hopping over the table and into the wardrobe.")
             aslan_on_table = False
         else:
             print("""Laying motionless on the table is a beautiful golden coloured Lion,
@@ -263,7 +263,7 @@ def execute_go(direction):
         print("The floor gives out from underneath you, and you tumble into the water, cracking your head against the rocks.")
         time.sleep(2)
         current_room = move(current_room["exits"],direction)
-    
+
     elif (is_valid_exit(current_room["exits"], direction) == True):
         current_room = move(current_room["exits"],direction)
     else:
@@ -303,7 +303,7 @@ def execute_drop(item_id):
 
 def execute_use(item_id):
     global current_room
-    
+
     for i in inventory:
         if item_id == i["id"]:
             if i["id"] == "kit":
@@ -389,7 +389,7 @@ def menu(exits, room_items, inv_items):
 
     # Display menu
     print_menu(exits, room_items, inv_items)
-    
+
     # Read player's input
     user_input = input("> ")
 
@@ -421,7 +421,7 @@ def dungeon():
     global inventory
     global current_room
     if dungeon_locked == True:
-        print("There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m late, I’m late for a very important date, I'll miss my afternoon tea!”. The long hand on his clock face points at 9, and the short hand at 1. There is a rusty gate to the south. The door slams behind you!\n")
+        print("There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. \nHe mutters “I’m late, I’m late for a very important date, I'll miss my afternoon tea!”.\nThe long hand on his clock face points at 9, and the short hand at 1. \nThere is a rusty gate to the south. The door slams behind you!\n")
     while dungeon_locked == True:
         # Show the menu with possible actions and ask the player
         command = menu([], current_room["items"], inventory)
@@ -438,7 +438,7 @@ def dungeon():
 
             elif use_list[0]["id"] == "bookcase":
                     if use_list[1]["id"] == "key":
-                        print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and " + use_list[1]["name"] + " flies into the air and burst into flame, and is quickly turned into a pile of dust.\n")
+                        print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. \nIt begins to shake violently and " + use_list[1]["name"] + " flies into the air and burst into flame, \nand is quickly turned into a pile of dust.\n")
                         inventory.remove(use_list[1])
                         time.sleep(1)
                         print("You destoyed your only key out. You are doomed to waste away in this dark dungeon.")
@@ -446,18 +446,18 @@ def dungeon():
                         current_room = rooms["Death"]
                         break
                     elif use_list[1]["id"] == "sword" or use_list[1]["id"] == "potion":
-                        print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and " + use_list[1]["name"] + " flies into the air and lands back in your hands.")
+                        print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. \nIt begins to shake violently and " + use_list[1]["name"] + " flies into the air and lands back in your hands.")
                     else:
-                        print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and " + use_list[1]["name"] + " flies into the air and burst into flame, and is quickly turned into a pile of dust.\n")
+                        print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. \nIt begins to shake violently and " + use_list[1]["name"] + " flies into the air and burst into flame, \nand is quickly turned into a pile of dust.\n")
                         inventory.remove(use_list[1])
 
             elif use_list[1]["id"] == "key" and use_list[0]["id"] == "gate":
-                    print("You turn the key in the lock, but notice it does not rotate all the way. There are four numbers of some form of combination lock above the keyhole.")
+                    print("You turn the key in the lock, but notice it does not rotate all the way. \nThere are four numbers of some form of combination lock above the keyhole.")
                     print("What number do you input?")
                     combo = normalise_input(input("> "))
                     if combo[0] == "1345":
                         dungeon_locked = False
-                        print("The key rotates completely, and you hear the latch on the gate open, revealing a small chamber. The room begins to shake and you hear the clicking of a latch behind. The door is open again!\n")
+                        print("The key rotates completely, and you hear the latch on the gate open, revealing a small chamber. \nThe room begins to shake and you hear the clicking of a latch behind. The door is open again!\n")
                         time.sleep(1.5)
                         break
                     else:
@@ -468,7 +468,7 @@ def dungeon():
     return
 
 def courtyard():
-    print("At first the door seems dark, like a great mouth of some form of massive stony beast, but shortly it begins to glow. Slowly you can make out letters appearing, as if etched in moonlight upon the oaken door:")
+    print("At first the door seems dark, like a great mouth of some form of massive stony beast,\nbut shortly it begins to glow. Slowly you can make out letters appearing, \nas if etched in moonlight upon the oaken door:")
 
     print("\n\tThis thing all things devours:")
     #time.sleep(1)
@@ -493,7 +493,7 @@ def courtyard():
         normalise_input(user_input)
         user_input = ''.join(user_input).lower()
         guesses -= 1
-        
+
         if user_input == "time":
             riddle_solved = True
             print("The letters flicker once, twice, three times, and then... the door creaks open, beckoning inwards.")
@@ -616,18 +616,18 @@ A sound like a thunderclap comes from behind you.
 You see again the wizened man in flowing blue robes. He looks at your handiwork.""")
     print('\t"Well done, ' + player_name + ', you have solved the little problem with the dragon."')
     print("""He smiles to himself, seemingly proud of his choice of champion.
-    "But, the Arkenstone, do you have it?"
+"But, the Arkenstone, do you have it?"
 """)
     #Logic to determine whether or not the player achieved a complete victory, if they did the wizard is very pleased
     if inventory.count(item_arkenstone) == 1:
         print("""You hand the Arkenstone to the wizard.
-    "Ha, well done. You truly are a great hero, and all without shedding an ounce of blood!"
+"Ha, well done. You truly are a great hero, and all without shedding an ounce of blood!"
 
             GAME OVER
 """)
     else:
         print("""You have nothing to show the wizard.
-    "Hmmph, a shame, you were so promising. I suppose I misinterpreted the prophecy."
+"Hmmph, a shame, you were so promising. I suppose I misinterpreted the prophecy."
 The wizard walks away, shaking his head.
 
             GAME OVER
@@ -647,38 +647,46 @@ def main():
     #Printing intitial game screen
     print("""
   __  ___  __   ______    __   __       __          _______
- |  |/  / |  | |   _  \  |  | |  |     |  |        /       |    
- |  '  /  |  | |  |_)  | |  | |  |     |  |       |   (----`    
- |    <   |  | |      /  |  | |  |     |  |        \   \        
- |  .  \  |  | |  |\  \-.|  | |  `----.|  `----.----)   |       
- |__|\__\ |__| | _| `.__||__| |_______||_______|_______/        
- 
+ |  |/  / |  | |   _  \\  |  | |  |     |  |        /       |
+ |  '  /  |  | |  |_)  | |  | |  |     |  |       |   (----`
+ |    <   |  | |      /  |  | |  |     |  |        \\   \\
+ |  .  \\  |  | |  |\\  \\-.|  | |  `----.|  `----.----)   |
+ |__|\\__\\ |__| | _| `.__||__| |_______||_______|_______/
+
   __  ___      ___          _______ __________  __       _______
- |  |/  /     /   \        /       |          ||  |     |   ____|
- |  '  /     /  ^  \      |   (----`---|  |---`|  |     |  |__
- |    <     /  /_\  \      \   \       |  |    |  |     |   __|
- |  .  \   /  _____  \ .----)   |      |  |    |  `----.|  |____
- |__|\__\ /__/     \__\|_______/       |__|    |_______||_______|
-                    
+ |  |/  /     /   \\        /       |          ||  |     |   ____|
+ |  '  /     /  ^  \\      |   (----`---|  |---`|  |     |  |__
+ |    <     /  /_\  \\      \\   \\       |  |    |  |     |   __|
+ |  .  \\   /  _____  \\ .----)   |      |  |    |  `----.|  |____
+ |__|\\__\\ /__/     \\__\\|_______/       |__|    |_______||_______|
+
 """)
 
     try:
         input("Press enter to continue...")
     except SyntaxError:
         pass
-    
+
     #Setting a player name
     print()
-    print("You emerge from a dense forest into a large clearing, upon the rise in front of you stands a of you is a foreboding castle made of a dark stone that has crumbled from the icy winters. The castle walls stood tall but as the tower that protruded into the clouds it looked as though it never ended. As you scan over the imposing structure you notice some windows are shattered and all that remains are fragments of glass stuck in the frame. The colours in the stained glass glowed in the dim sunlight peeking through the clouds, making it obvious it once was beautiful." + "\n")
-    print("You start walk towards the castle when a wizened man in flowing blue robes calls you from behind. You walk over to the man and he asks of your name.")
+    print("""You emerge from a dense forest into a large clearing, upon the rise in front of you
+stands a of you is a foreboding castle made of a dark stone that has crumbled from the
+icy winters. The castle walls stood tall but as the tower that protruded into the clouds
+it looked as though it never ended. As you scan over the imposing structure you notice
+some windows are shattered and all that remains are fragments of glass stuck in the frame.
+The colours in the stained glass glowed in the dim sunlight peeking through the clouds,
+making it obvious it once was beautiful.
+""")
+    print("You start walk towards the castle when a wizened man in flowing blue robes calls you from behind.\nYou walk over to the man and he asks of your name.")
     print("You reply by saying your name is")
 
     player_name=""
     while player_name == "":
         player_name = input("> ")
 
-    print("Ahh, so it is you after all " + player_name + """. You have come finally, as it was fortold many years ago that you would be the one to confront the dragon, and free us of his tyranny, and retrieve the Arkenstone.""")
-    print()
+    print("Ahh, so it is you after all " + player_name + """. You have come finally,
+as it was fortold many years ago that you would be the one to confront
+the dragon, and free us of his tyranny, and retrieve the Arkenstone.""")
     time.sleep(1)
 
     print("Do you accept this mighty quest?")
