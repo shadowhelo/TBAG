@@ -248,9 +248,9 @@ def execute_go(direction):
     """
 
     global current_room
-    if (current_room == room_dungeon and dungeon_locked == True ):
+    if (current_room == rooms["Dungeon"] and dungeon_locked == True ):
         print("You are locked in.")
-    elif (current_room == room_tower and tower_locked == True and direction == "north"):
+    elif (current_room == rooms["Great_Hall"] and tower_locked == True and direction == "north"):
         print("That door is locked, for now.")
     elif (is_valid_exit(current_room["exits"], direction) == True):
         current_room = move(current_room["exits"],direction)
