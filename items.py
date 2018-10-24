@@ -15,7 +15,7 @@ item_love_potion = {
 
     "description": "A potent love potion just one whiff and the victim falls helplessly in love.",
 
-    "location": "side table"
+    "location": "ornate side table"
 }
 
 item_sword = {
@@ -107,4 +107,14 @@ item_book7 = {
     "description": "An old leather bound book.",
 
     "location": "floor"
+}
+
+item_rusty_key = {
+    "id": "key",
+
+    "name": "A rusty key",
+
+    "description": "A rusty iron key",
+
+    "location": "ornate side table"
 }
