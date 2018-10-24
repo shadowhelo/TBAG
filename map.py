@@ -60,9 +60,11 @@ room_castle_grounds = {
 
     "description": """You arrive at the edge of the castle grounds, three paths lie before you;
 There is a path to that leads to the castle from the west of you made of yellow bricks.
-There is a path to the north of you that has a small white dog bounding down infront of you.
+There is a path to the north of you that Toto is bounding down.
 There is a path to the east that curves towards the castle which has a pair of red shoes
-part way down it.""",
+part way down it.
+
+Choose your path wisely, death awaits those unfortunate to stray down the wrong path""",
 
     "exits": {"west": "Courtyard", "north": "Death", "east": "Death"},
 
@@ -98,7 +100,7 @@ room_throne_room = {
     "description":
     """As you enter the Throne Room in front of you is a large stone table with
 numerous symbols etched into the side of it. In the corner of the room there is
-a rather large and familiar wardrobe, the wardrobe is slightly open and inside
+a rather large and familiar wardrobe, the wardrobe is ajar and inside
 you can see at least 10 big fur coats.""",
 
     "exits": {"west": "Great_Hall"},

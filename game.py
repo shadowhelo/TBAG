@@ -52,7 +52,7 @@ def print_room_items(room):
     to produce a comma-separated list of item names. For example:
 
     >>> print_room_items(rooms["Chamber"])
-    There is a Amortentia Love Potion here.
+    There is Amortentia Love Potion here.
     <BLANKLINE>
 
     >>> print_room_items(rooms["Throne_Room"])
@@ -404,12 +404,12 @@ def move(exits, direction):
     dictionary "exits" of avaiable exits, they choose to move towards the exit
     with the name given by "direction". For example:
 
-    >>> move(rooms["Reception"]["exits"], "south") == rooms["Admins"]
+    >>> move(rooms["Chamber"]["exits"], "north") == rooms["Dungeon"]
     True
-    >>> move(rooms["Reception"]["exits"], "east") == rooms["Tutor"]
+    >>> move(rooms["Dungeon"]["exits"], "south") == rooms["Chamber"]
     True
 
-    >>> move(rooms["Reception"]["exits"], "west") == rooms["Office"]
+    >>> move(rooms["Great_Hall"]["exits"], "east") == rooms["Courtyard"]
     False
     """
 
@@ -421,7 +421,7 @@ def dungeon():
     global inventory
     global current_room
     if dungeon_locked == True:
-        print("There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m late, I’m late for a very important date, I'll miss my afternoon tea!”. The long hand on his clock face points at 9, and the short hand at 1. There is a rusty gate to the south. The door then slams behind you, the clock has started, GO!\n")
+        print("There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m late, I’m late for a very important date, I'll miss my afternoon tea!”. The long hand on his clock face points at 9, and the short hand at 1. There is a rusty gate to the south. The door slams behind you!\n")
     while dungeon_locked == True:
         # Show the menu with possible actions and ask the player
         command = menu([], current_room["items"], inventory)
