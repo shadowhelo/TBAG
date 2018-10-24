@@ -314,7 +314,7 @@ def execute_use(item_id):
                 print("\nObjects in room that can be acted upon:")
                 print_features(current_room, i)
                 print("Use " + i["name"] + " on what?")
-                feat = input("")
+                feat = input("> ")
                 feat = normalise_input(feat)
                 for f in current_room["features"]:
                     if feat[0] == f["id"]:
@@ -675,7 +675,7 @@ def main():
 
     player_name=""
     while player_name == "":
-        player_name = input("")
+        player_name = input("> ")
 
     print("Ahh, so it is you after all " + player_name + """. You have come finally, as it was fortold many years ago that you would be the one to confront the dragon, and free us of his tyranny, and retrieve the Arkenstone.""")
     print()
@@ -687,7 +687,7 @@ def main():
     exit_loop = False
     while exit_loop == False:
         print("Yes or No?")
-        user_input = input()
+        user_input = input("> ")
         user_input = normalise_input(user_input)
         user_input = ''.join(user_input)
         if user_input == "yes":
