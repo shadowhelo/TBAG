@@ -463,14 +463,26 @@ def courtyard():
     print("\tName this thing, and enter.")
 
     global riddle_solved
+    global current_room
     guesses = 3
     while riddle_solved == False:
+        print("\nYou have " + str(guesses) + " more attempts to solve this riddle.")
         user_input = input("> ")
         normalise_input(user_input)
         user_input = ''.join(user_input).lower()
-
+        guesses -= 1
+        
         if user_input == "time":
             riddle_solved = True
+            print("The letters flicker once, twice, three times, and then... the door creaks open, beckoning inwards.")
+        elif guesses < 1:
+            current_room = rooms["Death"]
+            print("The letters flicker once, and then... ")
+            time.sleep(1)
+            print("The ground opens up beneath you, and swallows you whole.")
+            break
+        else:
+            print("The letters flicker once, and then... nothing.")
 
     return
 
@@ -689,6 +701,7 @@ def main():
             castle_grounds()
         elif current_room["name"] == "Courtyard" and riddle_solved == False:
             courtyard()
+            continue
         elif current_room["name"] == "Dungeon":
             dungeon()
         elif current_room["name"] == "Tower":
