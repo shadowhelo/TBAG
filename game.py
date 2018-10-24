@@ -5,6 +5,7 @@ from map import rooms
 from player import *
 from items import *
 from gameparser import *
+from credits import *
 
 dungeon_locked = True
 tower_locked = True
@@ -36,8 +37,10 @@ def list_of_items(items):
     return ', '.join(items_return)
 
 def print_features(room, item):
+    #prints the list of features in the room
+
     for f in room["features"]:
-        print(f["id"].upper() + " to use " + item["name"] + " on " + f["name"])
+        print("Type " + f["id"].upper() + " to use " + item["name"] + " on " + f["name"])
     print()
 
 def print_room_items(room):
@@ -675,7 +678,8 @@ def main():
             tower()
             if current_room == rooms["Death"]:
                 print_room(current_room)
-                break
+            time.sleep(4)
+            print_credits()
             break
 
         # Show the menu with possible actions and ask the player
