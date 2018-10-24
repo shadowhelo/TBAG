@@ -295,6 +295,7 @@ def execute_drop(item_id):
     global inventory
     for i in inventory:
         if item_id == i["id"]:
+            i["location"] = "floor"
             current_room["items"].append(i)
             inventory.remove(i)
             return
