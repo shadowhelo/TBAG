@@ -80,7 +80,7 @@ room_great_hall = {
 that it is lit by thousands and thousands of floating candles, as you look upward
 you see a velvety black ceiling dotted with stars, it looks as though the great
 hall was the gate way to heaven. To your West there is a doorway with a staircase
-leading down, to your East thereis a door and to the North there is another door,
+leading down, to your East there is a door and to the North there is another door,
 but it is locked.""",
 
     "exits": {"south": "Courtyard", "north": "Tower", "west": "Dungeon", "east": "Throne_Room"},
@@ -101,7 +101,7 @@ numerous symbols etched into the side of it. Laying motionless on the table
 was a beautiful golden coloured Lion, as you move closer to the table you see
 a sword protruding from the belly of this magnificent beast. In the corner of
 the room there is a rather large and familiar wardrobe, the wardrobe is slightly
-open and inside you can see at least 10 big fur coats. """,
+open and inside you can see at least 10 big fur coats.""",
 
     "exits": {"west": "Great_Hall"},
 

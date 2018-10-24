@@ -36,7 +36,8 @@ def list_of_items(items):
 
 def print_features(room):
     for f in room["features"]:
-        print( f["name"])
+        print(f["name"])
+    print()
 
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
@@ -45,15 +46,15 @@ def print_room_items(room):
     items.py for the definition of an item. This function uses list_of_items()
     to produce a comma-separated list of item names. For example:
 
-    >>> print_room_items(rooms["Reception"])
-    There is a pack of biscuits, a student handbook here.
+    >>> print_room_items(rooms["Chamber"])
+    There is a Amortentia Love Potion here.
     <BLANKLINE>
 
-    >>> print_room_items(rooms["Office"])
-    There is a pen here.
+    >>> print_room_items(rooms["Throne_Room"])
+    There is The Atlantean Sword here.
     <BLANKLINE>
 
-    >>> print_room_items(rooms["Admins"])
+    >>> print_room_items(rooms["Death"])
 
     (no output)
 
@@ -291,6 +292,7 @@ def execute_drop(item_id):
 
 def execute_use(item_id):
     global current_room
+    
     for i in inventory:
         if item_id == i["id"]:
             print("\nObjects in room that can be acted upon:")
@@ -585,20 +587,20 @@ def main():
     global tower_locked
 
     print("""
- __  ___  __   ______    __   __       __          _______
-|  |/  / |  | |   _  \  |  | |  |     |  |        /       |
-|  '  /  |  | |  |_)  | |  | |  |     |  |       |   (----`
-|    <   |  | |      /  |  | |  |     |  |        \   \
-|  .  \  |  | |  |\  \-.|  | |  `----.|  `----.----)   |
-|__|\__\ |__| | _| `.__||__| |_______||_______|_______/
-
- __  ___      ___          _______ __________  __       _______
-|  |/  /     /   \        /       |          ||  |     |   ____|
-|  '  /     /  ^  \      |   (----`---|  |---`|  |     |  |__
-|    <     /  /_\  \      \   \       |  |    |  |     |   __|
-|  .  \   /  _____  \ .----)   |      |  |    |  `----.|  |____
-|__|\__\ /__/     \__\|_______/       |__|    |_______||_______|
-
+  __  ___  __   ______    __   __       __          _______
+ |  |/  / |  | |   _  \  |  | |  |     |  |        /       |    
+ |  '  /  |  | |  |_)  | |  | |  |     |  |       |   (----`    
+ |    <   |  | |      /  |  | |  |     |  |        \   \        
+ |  .  \  |  | |  |\  \-.|  | |  `----.|  `----.----)   |       
+ |__|\__\ |__| | _| `.__||__| |_______||_______|_______/        
+ 
+  __  ___      ___          _______ __________  __       _______
+ |  |/  /     /   \        /       |          ||  |     |   ____|
+ |  '  /     /  ^  \      |   (----`---|  |---`|  |     |  |__
+ |    <     /  /_\  \      \   \       |  |    |  |     |   __|
+ |  .  \   /  _____  \ .----)   |      |  |    |  `----.|  |____
+ |__|\__\ /__/     \__\|_______/       |__|    |_______||_______|
+                    
 """)
 
     try:
@@ -644,7 +646,7 @@ def main():
 
     # Main game loop
     while True:
-        if inventory.count(item_love_potion) + inventory.count(item_sword) == 2 and tower_locked == True:
+        if inventory.count(item_potion) + inventory.count(item_sword) == 2 and tower_locked == True:
             print("The entire castle shakes as if a great earthquake has come to tear it down. You hear a crash, echoing from the Great Hall\n")
             tower_locked = False
 

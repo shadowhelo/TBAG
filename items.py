@@ -1,5 +1,5 @@
 item_survival_kit = {
-    "id": "survival_kit",
+    "id": "kit",
 
     "name": "Kirill's survival kit",
 
