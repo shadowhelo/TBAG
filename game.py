@@ -545,7 +545,7 @@ def tower():
                     time.sleep(1)
                     print("On the floor near the donkey's corpse you see it! The Arkenstone!")
                     time.sleep(1)
-                    print("It is beautiful")
+                    print("It is beautiful.")
                     time.sleep(1)
                     print("You feel hot. Very hot. You are burning up.")
                     time.sleep(1)
@@ -731,11 +731,10 @@ def main():
             continue
         elif current_room["name"] == "Tower":
             tower()
-            continue
-            #if current_room == rooms["Death"]:
-            #    print(rooms["Death"]["description"])
-            #time.sleep(4)
-            #print_credits()
+            if current_room == rooms["Death"]:
+                print(rooms["Death"]["description"])
+            time.sleep(4)
+            print_credits()
             break
 
         # Show the menu with possible actions and ask the player
