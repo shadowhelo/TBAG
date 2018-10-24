@@ -27,7 +27,7 @@ feature_donkey = {
 
     "name": "The donkey",
 
-    "description": "Looks like a bit of an ass"
+    "description": "Looks like a bit of an ass."
 }
 
 feature_rusty_gate = {
@@ -35,5 +35,5 @@ feature_rusty_gate = {
 
     "name": "Rusty gate",
 
-    "description": "Is a locked and rusty gate"
+    "description": "Is a locked and rusty gate."
 }
