@@ -10,6 +10,7 @@ from credits import *
 dungeon_locked = True
 tower_locked = True
 aslan_on_table = True
+riddle_solved = False
 
 
 def list_of_items(items):
@@ -255,12 +256,6 @@ def execute_go(direction):
         print("You are locked in.")
     elif (current_room == rooms["Great_Hall"] and tower_locked == True and direction == "north"):
         print("That door is locked, for now.")
-    elif (current_room == rooms["Castle_Grounds"]) and (direction == "east" or direction == "north"):
-        print("The stone beneath your feet feels unsteady, and then...")
-        time.sleep(1)
-        print("The floor gives out from underneath you, and you tumble into the water, cracking your head against the rocks.")
-        time.sleep(2)
-        current_room = move(current_room["exits"],direction)
     elif (is_valid_exit(current_room["exits"], direction) == True):
         current_room = move(current_room["exits"],direction)
     else:
@@ -412,6 +407,9 @@ def move(exits, direction):
     # Next room to go to
     return rooms[exits[direction]]
 
+def castle_grounds():
+    
+    return
 
 def dungeon():
     global dungeon_locked
@@ -464,8 +462,8 @@ def courtyard():
     #time.sleep(1)
     print("\tName this thing, and enter.")
 
-    riddle_solved = False
-
+    global riddle_solved
+    guesses = 3
     while riddle_solved == False:
         user_input = input("> ")
         normalise_input(user_input)
@@ -570,18 +568,21 @@ def tower():
             pass
 
 def victory():
+    #This function when executed, allows the player to experience the thrill of victory
     global inventory
     print()
     print("""
 A sound like a thunderclap comes from behind you.
 """)
     time.sleep(1)
+    #Any player achieving victory will see this block of text
     print("""
 You see again the wizened man in flowing blue robes. He looks at your handiwork.
     "Well done, adventurer, you have solved the little problem with the dragon."
 He smiles to himself, seemingly proud of his choice of champion.
     "But, the Arkenstone, do you have it?"
 """)
+    #Logic to determine whether or not the player achieved a complete victory, if they did the wizard is very pleased
     if inventory.count(item_arkenstone) == 1:
         print("""You hand the Arkenstone to the wizard.
     "Ha, well done. You truly are a great hero, and all without shedding an ounce of blood!"
@@ -599,10 +600,13 @@ The wizard walks away, shaking his head.
 # This is the entry point of our program
 def main():
 
+    #brings in global variables
     global player_name
     global inventory
     global tower_locked
+    global riddle_solved
 
+    #Printing intitial game screen
     print("""
   __  ___  __   ______    __   __       __          _______
  |  |/  / |  | |   _  \  |  | |  |     |  |        /       |    
@@ -624,7 +628,8 @@ def main():
         input("Press enter to continue...")
     except SyntaxError:
         pass
-
+    
+    #Setting a player name
     print()
     print("You emerge from a dense forest into a large clearing, upon the rise in front of you stands a of you is a foreboding castle made of a dark stone that has crumbled from the icy winters. The castle walls stood tall but as the tower that protruded into the clouds it looked as though it never ended. As you scan over the imposing structure you notice some windows are shattered and all that remains are fragments of glass stuck in the frame. The colours in the stained glass glowed in the dim sunlight peeking through the clouds, making it obvious it once was beautiful." + "\n")
     print("You start walk towards the castle when a wizened man in flowing blue robes calls you from behind. You walk over to the man and he asks of your name.")
@@ -661,14 +666,17 @@ def main():
 
     # Main game loop
     while True:
+
+        #Check if the tower door should open
         if inventory.count(item_potion) + inventory.count(item_sword) == 2 and tower_locked == True:
             print("The entire castle shakes as if a great earthquake has come to tear it down. You hear a crash, echoing from the Great Hall\n")
             tower_locked = False
             time.sleep(3)
 
+        #Check if player is dead
         if current_room == rooms["Death"]:
             print(rooms["Death"]["description"])
-            time.sleep(1)
+            time.sleep(4)
             print_credits()
             break
 
@@ -676,15 +684,17 @@ def main():
         print_room(current_room)
         print_inventory_items(inventory)
 
-        #interupts here to ensure loop works correctly
-        if current_room["name"] == "Courtyard":
+        #Checks special cases
+        if current_room["name"] == "Castle Grounds":
+            castle_grounds()
+        elif current_room["name"] == "Courtyard" and riddle_solved == False:
             courtyard()
         elif current_room["name"] == "Dungeon":
             dungeon()
         elif current_room["name"] == "Tower":
             tower()
             if current_room == rooms["Death"]:
-                print_room(current_room)
+                print(rooms["Death"]["description"])
             time.sleep(4)
             print_credits()
             break

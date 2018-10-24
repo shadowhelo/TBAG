@@ -27,4 +27,5 @@ Zachary	Ritterbusch
                                            
 """)
 
-print_credits()
+#for testing purposes
+#print_credits()
