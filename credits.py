@@ -1,6 +1,6 @@
 #Credits
-
-print(""" This game was created by;
+def print_credits():
+    print(""" This game was created by;
 
 Sarah	Albader
 Rhys	Connor
