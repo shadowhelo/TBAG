@@ -15,9 +15,9 @@ def list_of_items(items):
     returns a comma-separated list of item names (as a string). For example:
 
     >>> list_of_items([item_sword, item_love_potion])
-    'The Atalantean Sword, Amortentia Love Potion'
+    'The Atlantean Sword, Amortentia Love Potion'
 
-    >>> list_of_items([item_key])
+    >>> list_of_items([item_rusty_key])
     'Rusty Key'
 
     >>> list_of_items([])
