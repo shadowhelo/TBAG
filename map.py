@@ -23,7 +23,7 @@ ____    ____  ______    __    __      _______   __   _______  _______      __
 }
 
 room_chamber = {
-    "name":"Small chamber",
+    "name":"Small Chamber",
 
     "description":
     """A very small room adjacent to the dungeon.""",

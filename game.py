@@ -12,7 +12,6 @@ tower_locked = True
 aslan_on_table = True
 riddle_solved = False
 
-
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
     returns a comma-separated list of item names (as a string). For example:
@@ -38,8 +37,8 @@ def list_of_items(items):
     return ', '.join(items_return)
 
 def print_features(room, item):
+    
     #prints the list of features in the room
-
     for f in room["features"]:
         print("Type " + f["id"].upper() + " to use " + item["name"] + " on " + f["name"])
     print()
@@ -67,6 +66,7 @@ def print_room_items(room):
 
     """
 
+    #this function prints the items avaliable in the room
     if not room["items"]:
         pass
     else:
@@ -83,8 +83,9 @@ def print_inventory_items(items):
     <BLANKLINE>
 
     """
-    item_list = list_of_items(items)
 
+    #this function prints the inventory of the player
+    item_list = list_of_items(items)
     if item_list == "":
         pass
     else:
@@ -124,17 +125,22 @@ def print_room(room):
 
     Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
-    # Display room name
+
     global aslan_on_table
+    
+    # Display room name    
     print()
     print(room["name"].upper())
     print()
+    
     # Display room description
     print(room["description"])
     print()
+
+    #If statement handling Aslan and The Sword in the Throne Room
     if current_room == rooms["Throne_Room"] and aslan_on_table == True:
         if inventory.count(item_sword) == 1:
-            print("As you step back from pulling the sword from the lion,\nthe table cracks in half and you notice he has disappeared from the table. \nWhen you turn to leave the room, he is stood behind you.\nHe cries out “They always said you should never let your heart rule your head, \nbut is it not better to have loved and lost than to have never loved at all… ”\nbefore hopping over the table and into the wardrobe.")
+            print("As you step back from pulling the sword from the lion,\nthe table cracks in half and you notice he has disappeared from the table. \nWhen you turn to leave the room, he is stood behind you.\nHe cries out “They always said you should never let your heart rule your head, \nbut is it not better to have loved and lost than to have never loved at all… ”\nbefore hopping over the table and into the wardrobe.\n")
             aslan_on_table = False
         else:
             print("""Laying motionless on the table is a beautiful golden coloured Lion,
@@ -173,6 +179,8 @@ def print_exit(direction, leads_to):
     >>> print_exit("south", "Courtyard")
     GO SOUTH to the Courtyard.
     """
+
+    #Prints the avalibe exits in the room and where they lead to
     print("GO " + direction.upper() + " to the " + leads_to + ".")
 
 
@@ -191,30 +199,17 @@ def print_menu(exits, room_items, inv_items):
     and for each item in the inventory print
 
     "DROP <ITEM ID> to drop <item name>."
-
-    For example, the menu of actions available at the Reception may look like this:
-
-    You can:
-    GO EAST to your personal tutor's office.
-    GO WEST to the parking lot.
-    GO SOUTH to MJ and Simon's room.
-    TAKE BISCUITS to take a pack of biscuits.
-    TAKE HANDBOOK to take a student handbook.
-    DROP ID to drop your id card.
-    DROP LAPTOP to drop your laptop.
-    DROP MONEY to drop your money.
-    What do you want to do?
-
     """
+    
     print("You can:")
     # Iterate over available exits
     for direction in exits:
         # Print the exit name and where it leads to
         print_exit(direction, exit_leads_to(exits, direction))
 
+    #Prints the actions you can do in the room
     for i in room_items:
         print("TAKE " + str(i["id"]).upper() + " to take " + i["name"] + " from the " + i["location"] + ".")
-
     for i in inv_items:
         print("DROP, USE or INSPECT " + str(i["id"]).upper() + " to drop, use or inspect your " + i["name"] + ".")
 
@@ -241,6 +236,8 @@ def is_valid_exit(exits, chosen_exit):
     >>> is_valid_exit(rooms["Great_Hall"]["exits"], "north")
     True
     """
+
+    #Checks and returns if exit chosen is valid
     return chosen_exit in exits
 
 
@@ -252,6 +249,8 @@ def execute_go(direction):
     """
 
     global current_room
+
+    #code for handling if exits are locked or not for certain rooms
     if (current_room == rooms["Dungeon"] and dungeon_locked == True ):
         print("You are locked in.")
     elif (current_room == rooms["Great_Hall"] and tower_locked == True and direction == "north"):
@@ -278,6 +277,8 @@ def execute_take(item_id):
     """
 
     global inventory
+
+    #Code to allow player to take items from room and add them to inventory
     for i in current_room["items"]:
         if item_id == i["id"]:
             inventory.append(i)
@@ -293,6 +294,8 @@ def execute_drop(item_id):
     """
 
     global inventory
+
+    #Code to allow player to drop items from inventory to the room and change the location of the item to the floor
     for i in inventory:
         if item_id == i["id"]:
             i["location"] = "floor"
@@ -304,6 +307,7 @@ def execute_drop(item_id):
 def execute_use(item_id):
     global current_room
 
+    #Code to handle using items on features and handling the events that follow
     for i in inventory:
         if item_id == i["id"]:
             if i["id"] == "kit":
@@ -324,6 +328,8 @@ def execute_use(item_id):
     print("You cannot use that.")
 
 def execute_inspect(item_id):
+
+    #Code to inspect items
     for i in inventory:
         if item_id == i["id"]:
             print(i["description"])
@@ -337,6 +343,7 @@ def execute_command(command):
 
     """
 
+    #If structure to handle commands
     if 0 == len(command):
         return
 
@@ -471,22 +478,24 @@ def courtyard():
     print("At first the door seems dark, like a great mouth of some form of massive stony beast,\nbut shortly it begins to glow. Slowly you can make out letters appearing, \nas if etched in moonlight upon the oaken door:")
 
     print("\n\tThis thing all things devours:")
-    #time.sleep(1)
+    time.sleep(1)
     print("\tBirds, beasts, trees, flowers;")
-    #time.sleep(1)
+    time.sleep(1)
     print("\tGnaws iron, bites steel;")
-    #time.sleep(1)
+    time.sleep(1)
     print("\tGrinds hard stones to meal;")
-    #time.sleep(1)
+    time.sleep(1)
     print("\tSlays king, ruins town,")
-    #time.sleep(1)
+    time.sleep(1)
     print("\tAnd beats high mountain down.\n")
-    #time.sleep(1)
+    time.sleep(1)
     print("\tName this thing, and enter.")
 
     global riddle_solved
     global current_room
     guesses = 3
+
+    #code to handle the door riddle and to only allow 3 guesses
     while riddle_solved == False:
         print("\nYou have " + str(guesses) + " more attempts to solve this riddle.")
         user_input = input("> ")
@@ -691,6 +700,7 @@ the dragon, and free us of his tyranny, and retrieve the Arkenstone.""")
 
     print("Do you accept this mighty quest?")
 
+    #Checks if user wishes to play the game or not
     user_input = ""
     exit_loop = False
     while exit_loop == False:
