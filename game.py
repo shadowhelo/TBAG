@@ -429,7 +429,7 @@ def dungeon():
                     combo = normalise_input(input("> "))
                     if combo[0] == "1345":
                         dungeon_locked = False
-                        print("The key rotates completely, and you hear the latch on the gate open. The room begins to shake and you hear the clicking of a latch behind. The door is open again!\n")
+                        print("The key rotates completely, and you hear the latch on the gate open, revealing a small chamber. The room begins to shake and you hear the clicking of a latch behind. The door is open again!\n")
         except:
             pass
 
@@ -531,6 +531,10 @@ def main():
 
     # Main game loop
     while True:
+        if inventory.count(item_love_potion) + inventory.count(item_sword) == 2 and tower_locked == True:
+            print("The entire castle shakes as if a great earthquake has come to tear it down. You hear a crash, echoing from the Great Hall\n")
+            tower_locked = False
+
         # Display game status (room description, inventory etc.)
         print_room(current_room)
         print_inventory_items(inventory)

@@ -104,7 +104,7 @@ open and inside you can see at least 10 big fur coats. """,
 
     "items": [],
 
-    "features": []
+    "features": [item_sword]
 }
 
 room_dungeon = {

@@ -30,14 +30,6 @@ feature_donkey = {
     "description": "Looks like a bit of an ass"
 }
 
-feature_wall_text = {
-    "id": "wall_text",
-
-    "name": "text on wall",
-
-    "description": "\nInscribed on the wall is a block of text saying, \n I HINT AT WHICH BOOK TO PICKUP."
-}
-
 feature_rusty_gate = {
     "id": "gate",
 
