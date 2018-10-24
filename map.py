@@ -116,7 +116,7 @@ room_dungeon = {
 here is dense and much cooler. Its suspiciously quiet; you can hear the rising
 and falling of your own breath. You feel the warmth emanating from a single
 torch hanging from the ceiling. By the torch, black text is sloppily painted on
-the wall. You accidentally kick a pile of books lying on the floor and a cloud
+the wall "Supreme excellence consists of breaking the enemy's resistance without fighting". You accidentally kick a pile of books lying on the floor and a cloud
 of dust forms. Moving towards the farthest corner, you can hear a distant clock ticking.""",
 
     "exits": {"east": "Great_Hall", "south": "Chamber" },
