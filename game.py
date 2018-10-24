@@ -14,7 +14,7 @@ def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
     returns a comma-separated list of item names (as a string). For example:
 
-    >>> list_of_items([item_sword, item_love_potion])
+    >>> list_of_items([item_sword, item_potion])
     'The Atlantean Sword, Amortentia Love Potion'
 
     >>> list_of_items([item_rusty_key])
@@ -73,7 +73,7 @@ def print_inventory_items(items):
     print "You have ..." instead of "There is ... here.". For example:
 
     >>> print_inventory_items(inventory)
-    You have id card, laptop, money.
+    You have Kirill's survival kit.
     <BLANKLINE>
 
     """
@@ -94,39 +94,39 @@ def print_room(room):
     in the room, the list of items is printed next followed by a blank line
     (use print_room_items() for this). For example:
 
-    >>> print_room(rooms["Office"])
+    >>> print_room(rooms["Courtyard"])
     <BLANKLINE>
-    THE GENERAL OFFICE
+    COURTYARD
     <BLANKLINE>
-    You are standing next to the cashier's till at
-    30-36 Newport Road. The cashier looks at you with hope
-    in their eyes. If you go west you can return to the
-    Queen's Buildings.
-    <BLANKLINE>
-    There is a pen here.
-    <BLANKLINE>
-
-    >>> print_room(rooms["Reception"])
-    <BLANKLINE>
-    RECEPTION
-    <BLANKLINE>
-    You are in a maze of twisty little passages, all alike.
-    Next to you is the School of Computer Science and
-    Informatics reception. The receptionist, Matt Strangis,
-    seems to be playing an old school text-based adventure
-    game on his computer. There are corridors leading to the
-    south and east. The exit is to the west.
-    <BLANKLINE>
-    There is a pack of biscuits, a student handbook here.
+    You have crossed the moat, into the coutryard. Rising above you to the north is the castle wall.
+    Its parapets loom overhead, its murder holes glare out at you as if eyes of a great beast.
+    The courtyard you stand in, however is a beautiful garden, with blooming flowers. The
+    courtyard has clearly not been maintained in some time, as thegrass brushes up above your
+    ankles and the bushes are an unruly mess. Despite this, the beauty of the flowering plants,
+    and the deep, dark reflecting pool in front of the great door cannot be denied.
     <BLANKLINE>
 
-    >>> print_room(rooms["Admins"])
+    >>> print_room(rooms["Chamber"])
     <BLANKLINE>
-    MJ AND SIMON'S ROOM
+    A SMALL CHAMBER
     <BLANKLINE>
-    You are leaning agains the door of the systems managers'
-    room. Inside you notice Matt "MJ" John and Simon Jones. They
-    ignore you. To the north is the reception.
+    A very small room adjacent to the dungeon.
+    <BLANKLINE>
+    There is Amortentia Love Potion here.
+    <BLANKLINE>
+
+    >>> print_room(rooms["Throne_Room"])
+    <BLANKLINE>
+    THRONE ROOM
+    <BLANKLINE>
+    As you enter the Throne Room in front of you is a large stone table with
+    numerous symbols etched into the side of it. Laying motionless on the table
+    was a beautiful golden coloured Lion, as you move closer to the table you see
+    a sword protruding from the belly of this magnificent beast. In the corner of
+    the room there is a rather large and familiar wardrobe, the wardrobe is slightly
+    open and inside you can see at least 10 big fur coats.
+    <BLANKLINE>
+    There is The Atlantean Sword here.
     <BLANKLINE>
 
     Note: <BLANKLINE> here means that doctest should expect a blank line.
@@ -147,12 +147,12 @@ def exit_leads_to(exits, direction):
     exit taken from this dictionary). It returns the name of the room into which
     this exit leads. For example:
 
-    >>> exit_leads_to(rooms["Reception"]["exits"], "south")
-    "MJ and Simon's room"
-    >>> exit_leads_to(rooms["Reception"]["exits"], "east")
-    "your personal tutor's office"
-    >>> exit_leads_to(rooms["Tutor"]["exits"], "west")
-    'Reception'
+    >>> exit_leads_to(rooms["Tower"]["exits"], "south")
+    'The Great Hall'
+    >>> exit_leads_to(rooms["Dungeon"]["exits"], "east")
+    'The Great Hall'
+    >>> exit_leads_to(rooms["Great_Hall"]["exits"], "north")
+    'Tower'
     """
     return rooms[exits[direction]]["name"]
 
@@ -162,15 +162,15 @@ def print_exit(direction, leads_to):
     name of an exit) and the name of the room into which it leads (leads_to),
     and should print a menu line in the following format:
 
-    GO <EXIT NAME UPPERCASE> to <where it leads>.
+    GO <EXIT NAME UPPERCASE> to the <where it leads>.
 
     For example:
-    >>> print_exit("east", "you personal tutor's office")
-    GO EAST to you personal tutor's office.
-    >>> print_exit("south", "MJ and Simon's room")
-    GO SOUTH to MJ and Simon's room.
+    >>> print_exit("east", "Great_Hall")
+    GO EAST to the Great_Hall.
+    >>> print_exit("south", "Courtyard")
+    GO SOUTH to the Courtyard.
     """
-    print("GO " + direction.upper() + " to " + leads_to + ".")
+    print("GO " + direction.upper() + " to the " + leads_to + ".")
 
 
 def print_menu(exits, room_items, inv_items):
@@ -225,13 +225,17 @@ def is_valid_exit(exits, chosen_exit):
     the name of the exit has been normalised by the function normalise_input().
     For example:
 
-    >>> is_valid_exit(rooms["Reception"]["exits"], "south")
+    >>> is_valid_exit(rooms["Tower"]["exits"], "south")
     True
-    >>> is_valid_exit(rooms["Reception"]["exits"], "up")
+    >>> is_valid_exit(rooms["Dungeon"]["exits"], "north")
     False
-    >>> is_valid_exit(rooms["Parking"]["exits"], "west")
+    >>> is_valid_exit(rooms["Throne_Room"]["exits"], "west")
+    True
+    >>> is_valid_exit(rooms["Throne_Room"]["exits"], "east")
     False
-    >>> is_valid_exit(rooms["Parking"]["exits"], "east")
+    >>> is_valid_exit(rooms["Great_Hall"]["exits"], "east")
+    True
+    >>> is_valid_exit(rooms["Great_Hall"]["exits"], "north")
     True
     """
     return chosen_exit in exits
@@ -506,7 +510,7 @@ def tower():
                     time.sleep(2)
                     current_room = rooms["Death"]
                     break
-                
+
             elif use_list[1]["id"] == "potion":
                 if use_list[0]["id"] == "dragon":
                     print("You splash the potion on the dragon.")
@@ -523,7 +527,7 @@ def tower():
                     time.sleep(2)
                     inventory.append(item_arkenstone)
                     break
-                
+
                 elif use_list[0]["id"] == "donkey":
                     print("You splash the potion on the donkey.")
                     time.sleep(0.5)

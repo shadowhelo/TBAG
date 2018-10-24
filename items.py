@@ -8,7 +8,7 @@ item_survival_kit = {
     "location": ""
 }
 
-item_love_potion = {
+item_potion = {
     "id": "potion",
 
     "name": "Amortentia Love Potion",

@@ -26,12 +26,11 @@ room_chamber = {
     "name":"A small chamber",
 
     "description":
-    """A very small room adjacent to the dungeon.
-    """,
+    """A very small room adjacent to the dungeon.""",
 
     "exits": {"north": "Dungeon"},
 
-    "items": [item_love_potion],
+    "items": [item_potion],
 
     "features": []
 }
@@ -46,8 +45,7 @@ Its parapets loom overhead, its murder holes glare out at you as if eyes of a gr
 The courtyard you stand in, however is a beautiful garden, with blooming flowers. The
 courtyard has clearly not been maintained in some time, as thegrass brushes up above your
 ankles and the bushes are an unruly mess. Despite this, the beauty of the flowering plants,
-and the deep, dark reflecting pool in front of the great door cannot be denied.
-""",
+and the deep, dark reflecting pool in front of the great door cannot be denied.""",
 
     "exits": {"north": "Great_Hall"},
 
@@ -64,8 +62,7 @@ room_castle_grounds = {
 There is a path to that leads to the castle from the west of you made of yellow bricks.
 There is a path to the north of you that has a small white dog bounding down infront of you.
 There is a path to the east that curves towards the castle which has a pair of red shoes
-part way down it.
-    """,
+part way down it.""",
 
     "exits": {"west": "Courtyard", "north": "Courtyard", "east": "Courtyard"},
 
