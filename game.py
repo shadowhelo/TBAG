@@ -409,12 +409,12 @@ def dungeon():
         use_list = execute_command(command)
         correct_book = "book3"
         try:
-            if use_list[1]["id"] == correct_book:
+            if use_list[1]["id"] == correct_book and use_list[0]["id"] == "bookcase":
                     print("You place The Art of War upon the shelf of the bookcase. The room begins to shake and you hear the clicking of a latch behind. The door is open again!\n")
                     inventory.remove(use_list[1])
                     dungeon_locked = False
                     break
-            else:
+            elif use_list[0]["id"] == "bookcase":
                     print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and book flies into the air and burst into flame, and is quickly turned into a pile of dust.\n")
                     inventory.remove(use_list[1])
         except:
