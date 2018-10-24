@@ -9,7 +9,7 @@ appropriately.
 feature_bookcase = {
     "id": "bookcase",
 
-    "name": "The bookcase",
+    "name": "Bookcase",
 
     "description":  "An old oaken bookcase, it was once very fine indeed, but now it is wearing away."
 }
@@ -17,7 +17,7 @@ feature_bookcase = {
 feature_dragon = {
     "id": "dragon",
 
-    "name": "The dragon",
+    "name": "Dragon",
 
     "description": "A terrible fire breathing dragon."
 }
@@ -25,15 +25,15 @@ feature_dragon = {
 feature_donkey = {
     "id": "donkey",
 
-    "name": "The donkey",
+    "name": "Donkey",
 
-    "description": "Looks like a bit of an ass"
+    "description": "Looks like a bit of an ass."
 }
 
 feature_rusty_gate = {
     "id": "gate",
 
-    "name": "Rusty gate",
+    "name": "Gate",
 
-    "description": "Is a locked and rusty gate"
+    "description": "Is a locked and rusty gate."
 }
