@@ -26,3 +26,5 @@ Zachary	Ritterbusch
                     ',,,,,,,'
               
 """)
+
+print_credits()
