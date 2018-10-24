@@ -3,7 +3,9 @@ item_survival_kit = {
 
     "name": "Kirill's survival kit",
 
-    "description": "A dusty green box labelled 'Kirill's DO NOT TOUCH!'."
+    "description": "A dusty green box labelled 'Kirill's DO NOT TOUCH!'.",
+
+    "location": ""
 }
 
 item_love_potion = {
@@ -11,7 +13,9 @@ item_love_potion = {
 
     "name": "Amortentia",
 
-    "description": "A potent love potion just one whiff and the victim falls helplessly in love."
+    "description": "A potent love potion just one whiff and the victim falls helplessly in love.",
+
+    "location": "side table"
 }
 
 item_sword = {
@@ -19,7 +23,9 @@ item_sword = {
 
     "name": "The Atlantean Sword",
 
-    "description": "The Atlantean Sword is a bastard sword that once belonged to an ancient king who, along with this sword and several servants, was buried in a small tomb."
+    "description": "The Atlantean Sword is a bastard sword that once belonged to an ancient king who, along with this sword and several servants, was buried in a small tomb.",
+
+    "location": ""
 }
 
 item_arkenstone = {
@@ -27,7 +33,9 @@ item_arkenstone = {
 
     "name": "Arkenstone",
 
-    "description": "A wondrous large white gem, the royal jewel of the Dwarf-kingdom of Erebor."
+    "description": "A wondrous large white gem, the royal jewel of the Dwarf-kingdom of Erebor.",
+
+    "location": ""
 }
 
 item_book1 = {
@@ -35,7 +43,9 @@ item_book1 = {
 
     "name": "Pride and Prejudice",
 
-    "description": "An old leather bound book."
+    "description": "An old leather bound book.",
+
+    "location": "floor"
 }
 
 item_book2 = {
@@ -43,7 +53,9 @@ item_book2 = {
 
     "name": "Romeo and Juliet",
 
-    "description": "An old leather bound book."
+    "description": "An old leather bound book.",
+
+    "location": "floor"
 }
 
 item_book3 = {
@@ -51,7 +63,9 @@ item_book3 = {
 
     "name": "The Art of War",
 
-    "description": "An old leather bound book filled with great knowledge."
+    "description": "An old leather bound book filled with great knowledge.",
+
+    "location": "floor"
 }
 
 item_book4 = {
@@ -59,7 +73,9 @@ item_book4 = {
 
     "name": "Great Expectations",
 
-    "description": "An old leather bound book."
+    "description": "An old leather bound book.",
+
+    "location": "floor"
 }
 
 item_book5 = {
@@ -67,7 +83,9 @@ item_book5 = {
 
     "name": "A Midsummer Nights Dream",
 
-    "description": "An old leather bound book."
+    "description": "An old leather bound book.",
+
+    "location": "floor"
 
 }
 
@@ -76,7 +94,9 @@ item_book6 = {
 
     "name": "The Great Gatsby",
 
-    "description": "An old leather bound book."
+    "description": "An old leather bound book.",
+
+    "location": "floor"
 }
 
 item_book7 = {
@@ -84,5 +104,7 @@ item_book7 = {
 
     "name": "Breakfast at Tiffanys",
 
-    "description": "An old leather bound book."
+    "description": "An old leather bound book.",
+
+    "location": "floor"
 }
