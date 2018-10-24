@@ -8,6 +8,7 @@ from gameparser import *
 
 dungeon_locked = True
 tower_locked = True
+aslan_on_table = True
 
 
 def list_of_items(items):
@@ -34,9 +35,9 @@ def list_of_items(items):
 
     return ', '.join(items_return)
 
-def print_features(room):
+def print_features(room, item):
     for f in room["features"]:
-        print(f["name"])
+        print(f["id"].upper() + " to use " + item["name"] + " on " + f["name"])
     print()
 
 def print_room_items(room):
@@ -116,29 +117,26 @@ def print_room(room):
     There is Amortentia Love Potion here.
     <BLANKLINE>
 
-    >>> print_room(rooms["Throne_Room"])
-    <BLANKLINE>
-    THRONE ROOM
-    <BLANKLINE>
-    As you enter the Throne Room in front of you is a large stone table with
-    numerous symbols etched into the side of it. Laying motionless on the table
-    was a beautiful golden coloured Lion, as you move closer to the table you see
-    a sword protruding from the belly of this magnificent beast. In the corner of
-    the room there is a rather large and familiar wardrobe, the wardrobe is slightly
-    open and inside you can see at least 10 big fur coats.
-    <BLANKLINE>
-    There is The Atlantean Sword here.
-    <BLANKLINE>
-
+    
     Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
     # Display room name
+    global aslan_on_table
     print()
     print(room["name"].upper())
     print()
     # Display room description
     print(room["description"])
     print()
+    if current_room == rooms["Throne_Room"] and aslan_on_table == True:
+        if inventory.count(item_sword) == 1:
+            print("As you step back from pulling the sword from the lion, the table cracks in half and you notice he has disappeared from the table. When you turn to leave the room, he is stood behind you. He cries out “They always said you should never let your heart rule your head, but is it not better to have loved and lost than to have never loved at all… ” before hopping over the table and into the wardrobe.")
+            aslan_on_table = False
+        else:
+            print("""Laying motionless on the table is a beautiful golden coloured Lion,
+as you move closer to the table you see a sword protruding from the belly of this magnificent beast.
+
+""")
 
     # Display room items
     print_room_items(room)
@@ -295,15 +293,20 @@ def execute_use(item_id):
     
     for i in inventory:
         if item_id == i["id"]:
-            print("\nObjects in room that can be acted upon:")
-            print_features(current_room)
-            print("Use " + i["name"] + " on what?")
-            feat = input("")
-            feat = normalise_input(feat)
-            for f in current_room["features"]:
-                if feat[0] == f["id"]:
-                    print("You attempt to use " + i["name"] + " on " + f["name"] + ".")
-                    return list([f,i])
+            if i["id"] == "kit":
+                print("You are overcome with a warm fuzzy feeling.\n")
+                inventory.remove(i)
+                return
+            else:
+                print("\nObjects in room that can be acted upon:")
+                print_features(current_room, i)
+                print("Use " + i["name"] + " on what?")
+                feat = input("")
+                feat = normalise_input(feat)
+                for f in current_room["features"]:
+                    if feat[0] == f["id"]:
+                        print("You attempt to use " + i["name"] + " on " + f["name"] + ".\n")
+                        return list([f,i])
             return
     print("You cannot use that.")
 
@@ -373,7 +376,7 @@ def menu(exits, room_items, inv_items):
 
     # Display menu
     print_menu(exits, room_items, inv_items)
-
+    
     # Read player's input
     user_input = input("> ")
 
@@ -400,7 +403,7 @@ def move(exits, direction):
     # Next room to go to
     return rooms[exits[direction]]
 
-def castle_grounds():
+def throne_room():
 
     return
 
@@ -418,7 +421,7 @@ def dungeon():
         correct_book = "book3"
         try:
             if use_list[1]["id"] == correct_book and use_list[0]["id"] == "bookcase":
-                    print("You place The Art of War upon the shelf of the bookcase.\n")
+                    print("You place The Art of War upon the shelf of the bookcase. You hear the clink of metal on wood.\n")
                     inventory.remove(use_list[1])
                     current_room["items"].append(item_rusty_key)
                     #dungeon_locked = False
@@ -481,74 +484,82 @@ def tower():
             if use_list[1]["id"] == "sword":
                 if use_list[0]["id"] == "dragon":
                     print("You swing your mighty sword at the dragon's head.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("The beast moves his head out of the way and snaps his teeth at you.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("You sidestep, and thrust your blade into the throat of the creature.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("You struggle under its great weight, but stand strong.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("With roar of pain it finally collapses.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("\nYou've done it.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("You have slain the dragon.")
                     print("You look around, the donkey appears to have run off, and there is no sign of the fabled arkenstone.")
-                    time.sleep(2)
+                    time.sleep(2.5)
+                    victory()
                     break
 
-                elif use_list[1]["id"] == "donkey":
+                elif use_list[0]["id"] == "donkey":
                     print("With a single swing of your sword you take the head of the donkey clean off.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("On the floor near the donkey's corpse you see it! The Arkenstone!")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("It is beautiful")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("You feel hot. Very hot. You are burning up.")
-                    time.sleep(0.5)
-                    print("To you right, you notice the angry dragon is breathing fire!")
-                    time.sleep(0.5)
+                    time.sleep(1)
+                    print("To your right, you notice the angry dragon is breathing fire!")
+                    time.sleep(1)
                     print("You are melting, it is over.")
-                    time.sleep(2)
+                    time.sleep(2.5)
                     current_room = rooms["Death"]
                     break
 
             elif use_list[1]["id"] == "potion":
                 if use_list[0]["id"] == "dragon":
                     print("You splash the potion on the dragon.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("The dragon looks questioningly at the donkey, and then...")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("Its eyes soften and gaze lovingly at the donkey.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("The donkey kicks something over to you, and the pair ignore you.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("The object shines brilliantly, what is it?")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("It is the Arkenstone! It must be!")
-                    time.sleep(2)
+                    time.sleep(2.5)
                     inventory.append(item_arkenstone)
+                    victory()
                     break
 
                 elif use_list[0]["id"] == "donkey":
                     print("You splash the potion on the donkey.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("The donkey looks at you questioningly, and then...")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("Its eyes soften and seem filled with... love?")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("The donkey leaps on you in a fit of emotion.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("The dragon looks displeased...")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("Its once red scales seem transformed to green.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("It flashes its great claw at you, tearing you from pelvis to forehead.")
-                    time.sleep(0.5)
+                    time.sleep(1)
                     print("It is over in a second.")
-                    time.sleep(2)
+                    time.sleep(2.5)
                     current_room = rooms["Death"]
                     break
+
+            elif use_list[1]["id"] == "key":
+                print("It seems mildly irritated.\n")
+
+            else:
+                print("Nothing happens.\n")
         except:
             pass
 
@@ -560,7 +571,7 @@ A sound like a thunderclap comes from behind you.
 """)
     time.sleep(1)
     print("""
-You see again the wizened man in flowing blue robes. He looks at your handi work.
+You see again the wizened man in flowing blue robes. He looks at your handiwork.
     "Well done, adventurer, you have solved the little problem with the dragon."
 He smiles to himself, seemingly proud of his choice of champion.
     "But, the Arkenstone, do you have it?"
@@ -616,8 +627,6 @@ def main():
     player_name=""
     while player_name == "":
         player_name = input("")
-        player_name = normalise_input(player_name)
-        player_name = ''.join(player_name)
 
     print("Ahh, so it is you after all " + player_name + """. You have come finally, as it was fortold many years ago that you would be the one to....""")
 
@@ -649,6 +658,7 @@ def main():
         if inventory.count(item_potion) + inventory.count(item_sword) == 2 and tower_locked == True:
             print("The entire castle shakes as if a great earthquake has come to tear it down. You hear a crash, echoing from the Great Hall\n")
             tower_locked = False
+            time.sleep(3)
 
         # Display game status (room description, inventory etc.)
         print_room(current_room)

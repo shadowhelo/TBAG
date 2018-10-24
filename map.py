@@ -97,11 +97,9 @@ room_throne_room = {
 
     "description":
     """As you enter the Throne Room in front of you is a large stone table with
-numerous symbols etched into the side of it. Laying motionless on the table
-was a beautiful golden coloured Lion, as you move closer to the table you see
-a sword protruding from the belly of this magnificent beast. In the corner of
-the room there is a rather large and familiar wardrobe, the wardrobe is slightly
-open and inside you can see at least 10 big fur coats.""",
+numerous symbols etched into the side of it. In the corner of the room there is
+a rather large and familiar wardrobe, the wardrobe is slightly open and inside
+you can see at least 10 big fur coats.""",
 
     "exits": {"west": "Great_Hall"},
 
