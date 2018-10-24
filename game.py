@@ -8,6 +8,7 @@ from gameparser import *
 #from features import *
 
 dungeon_locked = True
+tower_locked = True
 #current_room = rooms["Castle_Grounds"]
 #player_name = ""
 #inventory = [item_sword]
@@ -247,7 +248,11 @@ def execute_go(direction):
     """
 
     global current_room
-    if (is_valid_exit(current_room["exits"], direction) == True):
+    if (current_room == room_dungeon and dungeon_locked == True ):
+        print("You are locked in.")
+    elif (current_room == room_tower and tower_locked == True and direction == "north"):
+        print("That door is locked, for now.")
+    elif (is_valid_exit(current_room["exits"], direction) == True):
         current_room = move(current_room["exits"],direction)
     else:
         print("you cannot go there")
@@ -410,13 +415,21 @@ def dungeon():
         correct_book = "book3"
         try:
             if use_list[1]["id"] == correct_book and use_list[0]["id"] == "bookcase":
-                    print("You place The Art of War upon the shelf of the bookcase. The room begins to shake and you hear the clicking of a latch behind. The door is open again!\n")
+                    print("You place The Art of War upon the shelf of the bookcase.\n")
                     inventory.remove(use_list[1])
-                    dungeon_locked = False
-                    break
+                    current_room["items"].append(item_rusty_key)
+                    #dungeon_locked = False
+                    #break
             elif use_list[0]["id"] == "bookcase":
                     print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and book flies into the air and burst into flame, and is quickly turned into a pile of dust.\n")
                     inventory.remove(use_list[1])
+            elif use_list[1]["id"] == "key" and use_list[0]["id"] == "gate":
+                    print("You turn the key in the lock, but notice it does not rotate all the way. There are four numbers of some form of combination lock above the keyhole.")
+                    print("What number do you input?")
+                    combo = normalise_input(input("> "))
+                    if combo[0] == "2430":
+                        dungeon_locked = False
+                        print("The key rotates completely, and you hear the latch on the gate open. The room begins to shake and you hear the clicking of a latch behind. The door is open again!")
         except:
             pass
 
