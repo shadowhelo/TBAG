@@ -256,6 +256,14 @@ def execute_go(direction):
         print("You are locked in.")
     elif (current_room == rooms["Great_Hall"] and tower_locked == True and direction == "north"):
         print("That door is locked, for now.")
+
+    elif (current_room == rooms["Castle_Grounds"]) and (direction == "east" or direction == "north"):
+        print("The stone beneath your feet feels unsteady, and then...")
+        time.sleep(1)
+        print("The floor gives out from underneath you, and you tumble into the water, cracking your head against the rocks.")
+        time.sleep(2)
+        current_room = move(current_room["exits"],direction)
+    
     elif (is_valid_exit(current_room["exits"], direction) == True):
         current_room = move(current_room["exits"],direction)
     else:
@@ -407,16 +415,12 @@ def move(exits, direction):
     # Next room to go to
     return rooms[exits[direction]]
 
-def castle_grounds():
-    
-    return
-
 def dungeon():
     global dungeon_locked
     global inventory
     global current_room
     if dungeon_locked == True:
-        print("There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m late, I’m late for a very important date, I'll miss my afternoon tea!”. The long hand on his clock face points at 1, and the short hand at 9. There is a rusty gate to the south. The door then slams behind you, the clock has started, GO!\n")
+        print("There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m late, I’m late for a very important date, I'll miss my afternoon tea!”. The long hand on his clock face points at 9, and the short hand at 1. There is a rusty gate to the south. The door then slams behind you, the clock has started, GO!\n")
     while dungeon_locked == True:
         # Show the menu with possible actions and ask the player
         command = menu([], current_room["items"], inventory)
@@ -429,8 +433,8 @@ def dungeon():
                     print("You place The Art of War upon the shelf of the bookcase. You hear the clink of metal on wood.\n")
                     inventory.remove(use_list[1])
                     current_room["items"].append(item_rusty_key)
-                    #dungeon_locked = False
-                    #break
+                    print('"Oh no!" the rabbit shouts. "Time has nearly run out!" Curiously, the long hand on his clock face still points at 9, and the short hand at 1.\n')
+
             elif use_list[0]["id"] == "bookcase":
                     if use_list[1]["id"] == "key":
                         print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and " + use_list[1]["name"] + " flies into the air and burst into flame, and is quickly turned into a pile of dust.\n")
@@ -445,6 +449,7 @@ def dungeon():
                     else:
                         print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and " + use_list[1]["name"] + " flies into the air and burst into flame, and is quickly turned into a pile of dust.\n")
                         inventory.remove(use_list[1])
+
             elif use_list[1]["id"] == "key" and use_list[0]["id"] == "gate":
                     print("You turn the key in the lock, but notice it does not rotate all the way. There are four numbers of some form of combination lock above the keyhole.")
                     print("What number do you input?")
@@ -452,6 +457,8 @@ def dungeon():
                     if combo[0] == "1345":
                         dungeon_locked = False
                         print("The key rotates completely, and you hear the latch on the gate open, revealing a small chamber. The room begins to shake and you hear the clicking of a latch behind. The door is open again!\n")
+                        time.sleep(1.5)
+                        break
                     else:
                         print("Nothing happens.")
         except:
@@ -634,6 +641,7 @@ def main():
     global tower_locked
     global riddle_solved
     global current_room
+    global dungeon_locked
 
     #Printing intitial game screen
     print("""
@@ -714,12 +722,10 @@ def main():
         print_inventory_items(inventory)
 
         #Checks special cases
-        if current_room["name"] == "Castle Grounds":
-            castle_grounds()
-        elif current_room["name"] == "Courtyard" and riddle_solved == False:
+        if current_room["name"] == "Courtyard" and riddle_solved == False:
             courtyard()
             continue
-        elif current_room["name"] == "Dungeon":
+        elif current_room["name"] == "Dungeon" and dungeon_locked == True:
             dungeon()
             continue
         elif current_room["name"] == "Tower":
