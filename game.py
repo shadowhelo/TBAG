@@ -461,7 +461,117 @@ def courtyard():
 
     return
 
+def tower():
+    global inventory
+    global current_room
+    while True:
+        # Show the menu with possible actions and ask the player
+        command = menu(current_room["exits"], current_room["items"], inventory)
 
+        # Execute the player's command
+        use_list = execute_command(command)
+
+        try:
+            if use_list[1]["id"] == "sword":
+                if use_list[0]["id"] == "dragon":
+                    print("You swing your mighty sword at the dragon's head.")
+                    time.sleep(0.5)
+                    print("The beast moves his head out of the way and snaps his teeth at you.")
+                    time.sleep(0.5)
+                    print("You sidestep, and thrust your blade into the throat of the creature.")
+                    time.sleep(0.5)
+                    print("You struggle under its great weight, but stand strong.")
+                    time.sleep(0.5)
+                    print("With roar of pain it finally collapses.")
+                    time.sleep(0.5)
+                    print("\nYou've done it.")
+                    time.sleep(0.5)
+                    print("You have slain the dragon.")
+                    print("You look around, the donkey appears to have run off, and there is no sign of the fabled arkenstone.")
+                    time.sleep(2)
+                    break
+
+                elif use_list[1]["id"] == "donkey":
+                    print("With a single swing of your sword you take the head of the donkey clean off.")
+                    time.sleep(0.5)
+                    print("On the floor near the donkey's corpse you see it! The Arkenstone!")
+                    time.sleep(0.5)
+                    print("It is beautiful")
+                    time.sleep(0.5)
+                    print("You feel hot. Very hot. You are burning up.")
+                    time.sleep(0.5)
+                    print("To you right, you notice the angry dragon is breathing fire!")
+                    time.sleep(0.5)
+                    print("You are melting, it is over.")
+                    time.sleep(2)
+                    current_room = rooms["Death"]
+                    break
+                
+            elif use_list[1]["id"] == "potion":
+                if use_list[0]["id"] == "dragon":
+                    print("You splash the potion on the dragon.")
+                    time.sleep(0.5)
+                    print("The dragon looks questioningly at the donkey, and then...")
+                    time.sleep(0.5)
+                    print("Its eyes soften and gaze lovingly at the donkey.")
+                    time.sleep(0.5)
+                    print("The donkey kicks something over to you, and the pair ignore you.")
+                    time.sleep(0.5)
+                    print("The object shines brilliantly, what is it?")
+                    time.sleep(0.5)
+                    print("It is the Arkenstone! It must be!")
+                    time.sleep(2)
+                    inventory.append(item_arkenstone)
+                    break
+                
+                elif use_list[0]["id"] == "donkey":
+                    print("You splash the potion on the donkey.")
+                    time.sleep(0.5)
+                    print("The donkey looks at you questioningly, and then...")
+                    time.sleep(0.5)
+                    print("Its eyes soften and seem filled with... love?")
+                    time.sleep(0.5)
+                    print("The donkey leaps on you in a fit of emotion.")
+                    time.sleep(0.5)
+                    print("The dragon looks displeased...")
+                    time.sleep(0.5)
+                    print("Its once red scales seem transformed to green.")
+                    time.sleep(0.5)
+                    print("It flashes its great claw at you, tearing you from pelvis to forehead.")
+                    time.sleep(0.5)
+                    print("It is over in a second.")
+                    time.sleep(2)
+                    current_room = rooms["Death"]
+                    break
+        except:
+            pass
+
+def victory():
+    global inventory
+    print()
+    print("""
+A sound like a thunderclap comes from behind you.
+""")
+    time.sleep(1)
+    print("""
+You see again the wizened man in flowing blue robes. He looks at your handi work.
+    "Well done, adventurer, you have solved the little problem with the dragon."
+He smiles to himself, seemingly proud of his choice of champion.
+    "But, the Arkenstone, do you have it?"
+""")
+    if inventory.count(item_arkenstone) == 1:
+        print("""You hand the Arkenstone to the wizard.
+    "Ha, well done. You truly are a great hero, and all without shedding an ounce of blood!"
+
+            GAME OVER
+""")
+    else:
+        print("""You have nothing to show the wizard.
+    "Hmmph, a shame, you were so promising. I suppose I misinterpreted the prophecy."
+The wizard walks away, shaking his head.
+
+            GAME OVER
+""")
 
 # This is the entry point of our program
 def main():
@@ -534,6 +644,8 @@ def main():
 
         # Display game status (room description, inventory etc.)
         print_room(current_room)
+        if current_room == rooms["Death"]:
+            break
         print_inventory_items(inventory)
 
         #interupts here to ensure loop works correctly
@@ -541,6 +653,12 @@ def main():
             courtyard()
         elif current_room["name"] == "Dungeon":
             dungeon()
+        elif current_room["name"] == "Tower":
+            tower()
+            if current_room == rooms["Death"]:
+                print_room(current_room)
+                break
+            break
 
         # Show the menu with possible actions and ask the player
         command = menu(current_room["exits"], current_room["items"], inventory)

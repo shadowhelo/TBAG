@@ -13,7 +13,13 @@ ____    ____  ______    __    __      _______   __   _______  _______      __
     |  |    |  `--'  | |  `--'  |    |  '--'  ||  | |  |____ |  '--'  |   |__|
     |__|     \______/   \______/     |_______/ |__| |_______||_______/    (__)
 
-    """
+    """,
+
+    "exits": {},
+
+    "items": [],
+
+    "features": []
 }
 
 room_chamber = {
@@ -80,7 +86,7 @@ hall was the gate way to heaven. To your West there is a doorway with a staircas
 leading down, to your East thereis a door and to the North there is another door,
 but it is locked.""",
 
-    "exits": {"south": "Courtyard", "north": "Tower", "east": "Dungeon", "west": "Throne_Room"},
+    "exits": {"south": "Courtyard", "north": "Tower", "west": "Dungeon", "east": "Throne_Room"},
 
     "items": [],
 
