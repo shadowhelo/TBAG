@@ -60,7 +60,7 @@ room_castle_grounds = {
 
     "description": """You arrive at the edge of the castle grounds, three paths lie before you;
 There is a path to that leads to the castle from the west of you made of yellow bricks.
-There is a path to the north of you that has a small white dog bounding down infront of you.
+There is a path to the north of you that Toto is bounding down.
 There is a path to the east that curves towards the castle which has a pair of red shoes
 part way down it.""",
 
