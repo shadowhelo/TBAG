@@ -25,7 +25,7 @@ item_sword = {
 
     "description": "The Atlantean Sword is a bastard sword that once belonged to an ancient king who, along with this sword and several servants, was buried in a small tomb.",
 
-    "location": ""
+    "location": "Lion's body"
 }
 
 item_arkenstone = {

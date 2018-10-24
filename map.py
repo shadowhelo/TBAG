@@ -23,7 +23,7 @@ ____    ____  ______    __    __      _______   __   _______  _______      __
 }
 
 room_chamber = {
-    "name":"A small chamber",
+    "name":"Small chamber",
 
     "description":
     """A very small room adjacent to the dungeon.""",
@@ -75,7 +75,7 @@ Choose your path wisely, death awaits those unfortunate to stray down the wrong 
 
 room_great_hall = {
 
-    "name": "The Great Hall",
+    "name": "Great Hall",
 
     "description":
     """You are now standing at the entrance of the great hall. As you look around you notice
