@@ -36,7 +36,8 @@ def list_of_items(items):
 
 def print_features(room):
     for f in room["features"]:
-        print( f["name"])
+        print(f["name"])
+    print()
 
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
@@ -291,6 +292,7 @@ def execute_drop(item_id):
 
 def execute_use(item_id):
     global current_room
+    
     for i in inventory:
         if item_id == i["id"]:
             print("\nObjects in room that can be acted upon:")
