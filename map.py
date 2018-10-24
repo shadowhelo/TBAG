@@ -131,7 +131,7 @@ the burnt stone floor you see a plethora of skeletons; the remains of the people
 have tried before.
 
 The ground shakes and a hot gust of air blows you back. Towering over you is the terrible
-fire breathing dragon that has guarded the Arkenstone for many years.Wrapped in its tail
+fire breathing dragon that has guarded the Arkenstone for many years. Wrapped in its tail
 is an annoying donkey.""",
 
     "exits": {"east": "Great_Hall", "south": "Credits" },

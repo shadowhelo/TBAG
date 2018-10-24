@@ -114,7 +114,7 @@ item_rusty_key = {
 
     "name": "A rusty key",
 
-    "description": "A rusty iron key",
+    "description": "A rusty iron key.",
 
     "location": "ornate side table"
 }
