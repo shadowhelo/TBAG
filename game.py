@@ -406,8 +406,8 @@ def move(exits, direction):
     # Next room to go to
     return rooms[exits[direction]]
 
-def throne_room():
-
+def castle_grounds():
+    
     return
 
 def dungeon():
@@ -631,8 +631,8 @@ def main():
     while player_name == "":
         player_name = input("")
 
-    print("Ahh, so it is you after all " + player_name + """. You have come finally, as it was fortold many years ago that you would be the one to....""")
-
+    print("Ahh, so it is you after all " + player_name + """. You have come finally, as it was fortold many years ago that you would be the one to confront the dragon, and free us of his tyranny, and retrieve the Arkenstone.""")
+    print()
     time.sleep(1)
 
     print("Do you accept this mighty quest?")
@@ -663,14 +663,17 @@ def main():
             tower_locked = False
             time.sleep(3)
 
+        if current_room == rooms["Death"]:
+            print(rooms["Death"]["description"]
+            break
         # Display game status (room description, inventory etc.)
         print_room(current_room)
-        if current_room == rooms["Death"]:
-            break
         print_inventory_items(inventory)
 
         #interupts here to ensure loop works correctly
-        if current_room["name"] == "Courtyard":
+        if current_room["name"] == "Castle Grounds")
+            castle_grounds()
+        elif current_room["name"] == "Courtyard":
             courtyard()
         elif current_room["name"] == "Dungeon":
             dungeon()
