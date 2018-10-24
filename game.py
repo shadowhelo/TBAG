@@ -5,29 +5,26 @@ from map import rooms
 from player import *
 from items import *
 from gameparser import *
-#from features import *
 
 dungeon_locked = True
 tower_locked = True
-#current_room = rooms["Castle_Grounds"]
-#player_name = ""
-#inventory = [item_sword]
+
 
 def list_of_items(items):
     """This function takes a list of items (see items.py for the definition) and
     returns a comma-separated list of item names (as a string). For example:
 
-    >>> list_of_items([item_pen, item_handbook])
-    'a pen, a student handbook'
+    >>> list_of_items([item_sword, item_love_potion])
+    'The Atalantean Sword, Amortentia Love Potion'
 
-    >>> list_of_items([item_id])
-    'id card'
+    >>> list_of_items([item_key])
+    'Rusty Key'
 
     >>> list_of_items([])
     ''
 
-    >>> list_of_items([item_money, item_handbook, item_laptop])
-    'money, a student handbook, laptop'
+    >>> list_of_items([item_book1, item_book2])
+    'Pride and Prejudice, Romeo and Juliet'
 
     """
     items_return = []
