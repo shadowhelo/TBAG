@@ -108,9 +108,9 @@ open and inside you can see at least 10 big fur coats. """,
 
     "exits": {"west": "Great_Hall"},
 
-    "items": [],
+    "items": [item_sword],
 
-    "features": [item_sword]
+    "features": []
 }
 
 room_dungeon = {
@@ -146,11 +146,11 @@ The ground shakes and a hot gust of air blows you back. Towering over you is the
 fire breathing dragon that has guarded the Arkenstone for many years. Wrapped in its tail
 is an annoying donkey.""",
 
-    "exits": {"east": "Great_Hall", "south": "Credits" },
+    "exits": {"south": "Great_Hall"},
 
     "items": [],
 
-    "features": []
+    "features": [feature_dragon, feature_donkey]
 }
 
 

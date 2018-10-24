@@ -577,6 +577,8 @@ The wizard walks away, shaking his head.
 def main():
 
     global player_name
+    global inventory
+    global tower_locked
 
     print("""
  __  ___  __   ______    __   __       __          _______
