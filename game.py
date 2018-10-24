@@ -414,6 +414,7 @@ def castle_grounds():
 def dungeon():
     global dungeon_locked
     global inventory
+    global current_room
     if dungeon_locked == True:
         print("There you vaguely see an anxious rabbit in a waistcoat - gripping onto a golden pocket watch. He mutters “I’m late, I’m late for a very important date, I'll miss my afternoon tea!”. The long hand on his clock face points at 1, and the short hand at 9. There is a rusty gate to the south. The door then slams behind you, the clock has started, GO!\n")
     while dungeon_locked == True:
@@ -431,8 +432,19 @@ def dungeon():
                     #dungeon_locked = False
                     #break
             elif use_list[0]["id"] == "bookcase":
-                    print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and book flies into the air and burst into flame, and is quickly turned into a pile of dust.\n")
-                    inventory.remove(use_list[1])
+                    if use_list[1]["id"] == "key":
+                        print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and " + use_list[1]["name"] + " flies into the air and burst into flame, and is quickly turned into a pile of dust.\n")
+                        inventory.remove(use_list[1])
+                        time.sleep(1)
+                        print("You destoyed your only key out. You are doomed to waste away in this dark dungeon.")
+                        time.sleep(2.5)
+                        current_room = rooms["Death"]
+                        break
+                    elif use_list[1]["id"] == "sword" or use_list[1]["id"] == "potion":
+                        print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and " + use_list[1]["name"] + " flies into the air and lands back in your hands.")
+                    else:
+                        print("You place " + use_list[1]["name"] + " on the shelf of the bookcase. It begins to shake violently and " + use_list[1]["name"] + " flies into the air and burst into flame, and is quickly turned into a pile of dust.\n")
+                        inventory.remove(use_list[1])
             elif use_list[1]["id"] == "key" and use_list[0]["id"] == "gate":
                     print("You turn the key in the lock, but notice it does not rotate all the way. There are four numbers of some form of combination lock above the keyhole.")
                     print("What number do you input?")
@@ -440,6 +452,8 @@ def dungeon():
                     if combo[0] == "1345":
                         dungeon_locked = False
                         print("The key rotates completely, and you hear the latch on the gate open, revealing a small chamber. The room begins to shake and you hear the clicking of a latch behind. The door is open again!\n")
+                    else:
+                        print("Nothing happens.")
         except:
             pass
 
@@ -475,6 +489,7 @@ def courtyard():
         if user_input == "time":
             riddle_solved = True
             print("The letters flicker once, twice, three times, and then... the door creaks open, beckoning inwards.")
+            time.sleep(1.5)
         elif guesses < 1:
             current_room = rooms["Death"]
             print("The letters flicker once, and then... ")
@@ -582,6 +597,7 @@ def tower():
 def victory():
     #This function when executed, allows the player to experience the thrill of victory
     global inventory
+    global player_name
     print()
     print("""
 A sound like a thunderclap comes from behind you.
@@ -589,9 +605,9 @@ A sound like a thunderclap comes from behind you.
     time.sleep(1)
     #Any player achieving victory will see this block of text
     print("""
-You see again the wizened man in flowing blue robes. He looks at your handiwork.
-    "Well done, adventurer, you have solved the little problem with the dragon."
-He smiles to himself, seemingly proud of his choice of champion.
+You see again the wizened man in flowing blue robes. He looks at your handiwork.""")
+    print('\t"Well done, ' + player_name + ', you have solved the little problem with the dragon."')
+    print("""He smiles to himself, seemingly proud of his choice of champion.
     "But, the Arkenstone, do you have it?"
 """)
     #Logic to determine whether or not the player achieved a complete victory, if they did the wizard is very pleased
@@ -617,6 +633,7 @@ def main():
     global inventory
     global tower_locked
     global riddle_solved
+    global current_room
 
     #Printing intitial game screen
     print("""
@@ -704,12 +721,14 @@ def main():
             continue
         elif current_room["name"] == "Dungeon":
             dungeon()
+            continue
         elif current_room["name"] == "Tower":
             tower()
-            if current_room == rooms["Death"]:
-                print(rooms["Death"]["description"])
-            time.sleep(4)
-            print_credits()
+            continue
+            #if current_room == rooms["Death"]:
+            #    print(rooms["Death"]["description"])
+            #time.sleep(4)
+            #print_credits()
             break
 
         # Show the menu with possible actions and ask the player
